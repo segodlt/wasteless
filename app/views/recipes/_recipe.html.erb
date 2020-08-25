@@ -1,4 +1,5 @@
-<%= form_for(@recipe) do |f| %>
+<%= simple_form_for(@recipe) do |f| %>
+	<%= f.association :category %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
