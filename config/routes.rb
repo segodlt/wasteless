@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:edit, :update, :destroy]
 
-  resources :ingredients, only: [ :index, :show ]
+  resources :categories, only: [:index, :show]
+  resources :ingredients, only: [:index, :show]
 end
