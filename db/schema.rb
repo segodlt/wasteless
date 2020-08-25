@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_25_090059) do
-
+ActiveRecord::Schema.define(version: 2020_08_25_095650) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +21,65 @@ ActiveRecord::Schema.define(version: 2020_08_25_090059) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_favorites_on_recipe_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "groceries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "measure_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["measure_id"], name: "index_groceries_on_measure_id"
+    t.index ["user_id"], name: "index_groceries_on_user_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.string "unit"
+    t.string "alert"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "measures", force: :cascade do |t|
+    t.decimal "quantity"
+    t.boolean "required"
+    t.bigint "ingredient_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["ingredient_id"], name: "index_measures_on_ingredient_id"
+    t.index ["recipe_id"], name: "index_measures_on_recipe_id"
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_recipes_on_category_id"
+    t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.text "content"
+    t.decimal "rating"
+    t.bigint "user_id", null: false
+    t.bigint "recipe_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["recipe_id"], name: "index_reviews_on_recipe_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -30,8 +88,24 @@ ActiveRecord::Schema.define(version: 2020_08_25_090059) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "username"
+    t.date "birthdate"
+    t.string "address"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "favorites", "recipes"
+  add_foreign_key "favorites", "users"
+  add_foreign_key "groceries", "measures"
+  add_foreign_key "groceries", "users"
+  add_foreign_key "measures", "ingredients"
+  add_foreign_key "measures", "recipes"
+  add_foreign_key "recipes", "categories"
+  add_foreign_key "recipes", "users"
+  add_foreign_key "reviews", "recipes"
+  add_foreign_key "reviews", "users"
 end
