@@ -1,12 +1,24 @@
 <h2><%= @recipe.title %></h2>
 <p><%= @recipe.description %></p>
+<%= link_to "Donner votre avis", # Ajouter ancre vers l'ajout d'une review toujours sur la show de Recipe %>
 
 <ul class="list-group">
   <% @recipe.reviews.each do |review| %>
     <li><%= review.rating %></li>
     <li><%= review.content %></li>
+    <li><%= link_to "Modifier", edit_review_path(review) %></li>
+    <li><%= link_to "Effacer", review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %></li>
   <% end %>
 </ul>
+
+<!-- Formulaire d'ajout de review -->
+<br>
+<%= simple_form_for [ @recipe, @review ] do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :content %>
+  <%= f.submit "Valider votre avis" %>
+<% end %>
+<br>
 
 <%= link_to "Modifier #{@recipe.title}", edit_recipe_path %> |
 <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |

@@ -14,8 +14,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
-    redirect_to recipe_path(@recipe)
+    # @recipe.user = current_user
+    @recipe.save!
+    	redirect_to recipe_path(@recipe)
   end
 
   def edit
@@ -37,6 +38,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description)
+    params.require(:recipe).permit(:title, :description, :category_id)
   end
 end
