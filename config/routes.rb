@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :reviews, only: [ :new, :create ]
   end
+
+  resources :ingredients, only: [ :index, :show ]
 end
