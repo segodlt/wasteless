@@ -1,8 +1,10 @@
 <ul>
   <% @recipes.each do |recipe| %>
     <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+
   <% end %>
 </ul>
 
 <%= link_to "Ajouter une nouvelle recette", new_recipe_path(@recipe) %> |
+<%= link_to "Mes favoris", favorites_path %> |
 <%= link_to "Retour", root_path %>

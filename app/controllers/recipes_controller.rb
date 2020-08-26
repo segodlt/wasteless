@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @favorite = @recipe.favorites.where(user_id:current_user.id).first
     @review = Review.new
   end
 
