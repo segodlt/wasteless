@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary', '~> 1.12.0'
 
+# Authorisation with Pundit
+gem 'pundit'
+
 gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb

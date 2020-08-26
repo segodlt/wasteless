@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all
+    @ingredients = policy_scope(Ingredient).order(created_at: :desc)
   end
 
   # def show
