@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :reviews, only: [:index, :create, :update]
+    resources :measures, only: [ :new, :create ]
   end
   resources :reviews, only: [:edit, :destroy]
 
