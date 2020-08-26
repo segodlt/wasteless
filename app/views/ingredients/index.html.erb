@@ -1,0 +1,9 @@
+<h2>Liste des ingrédients</h2>
+
+<% @ingredients.each do |ingredient| %>
+  <ul>
+    <li><%= ingredient.name %> - unit : <%= ingredient.unit %> - précautions : <%= ingredient.alert %></li>
+  </ul>
+<% end %>
+
+

@@ -1,4 +1,5 @@
 
+
 require "nokogiri"
 require "open-uri"
 
@@ -84,3 +85,10 @@ end
 
 puts "Part 2 finish"
 puts "Database created"
+
+puts "Creating admin account"
+
+admin = User.create!(email: "equipe.wasteless@gmail.com", password: 123456, admin: true)
+
+puts "admin account created"
+
