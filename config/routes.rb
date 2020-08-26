@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:edit, :destroy]
   resources :favorites, only: [:index, :create, :destroy]
+  resources :groceries, only: [:index, :create, :destroy]
 
   resources :categories, only: [:index, :show]
   resources :ingredients, only: [:index, :show]

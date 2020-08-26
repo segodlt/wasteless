@@ -14,7 +14,11 @@
   <% @recipe.reviews.each do |review| %>
     <li><%= review.rating %></li>
     <li><%= review.content %></li>
-    <li><%= link_to "Modifier", edit_review_path(review, anchor:"review-form") %></li>
+    <li>
+    	<% if policy(review).edit? %>
+		  	<%= link_to "Modifier", edit_review_path(review, anchor:"review-form") %>
+		  <% end %>
+    </li>
     <li><%= link_to "Effacer", review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %></li>
   <% end %>
 </ul>
@@ -33,7 +37,10 @@
 </div>
 <br>
 
-<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
+
+<% if policy(@recipe).edit? %>
+	<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
+<% end %>
 <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
 <%= link_to "Mes favoris", favorites_path %> |
 <%= link_to "Retour", recipes_path %>

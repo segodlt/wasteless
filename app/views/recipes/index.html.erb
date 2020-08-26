@@ -5,6 +5,9 @@
   <% end %>
 </ul>
 
-<%= link_to "Ajouter une nouvelle recette", new_recipe_path(@recipe) %> |
+
+<% if policy(Recipe).create? %>
+	<%= link_to "Ajouter une nouvelle recette", new_recipe_path(@recipe) %> |
+<% end %>
 <%= link_to "Mes favoris", favorites_path %> |
 <%= link_to "Retour", root_path %>
