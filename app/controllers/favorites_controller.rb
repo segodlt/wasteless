@@ -14,6 +14,6 @@ class FavoritesController < ApplicationController
   def destroy
   	@favorite = Favorite.find(params[:id])
     @favorite.destroy
-  	redirect_to recipe_path(@favorite.recipe),  notice: "Vous avez supprimé #{@favorite.recipe.title} à vos favoris."
+  	redirect_to recipe_path(@favorite.recipe), notice: "Vous avez supprimé #{@favorite.recipe.title} à vos favoris."
   end
 end
