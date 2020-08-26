@@ -1,4 +1,4 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Mettre à jour mon compte <%= resource_name.to_s.humanize %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -10,26 +10,61 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name,
+                label: "Quel est votre prénom?",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
+                autofocus: true,
+                input_html: { autocomplete: "first_name"} %>
+    <%= f.input :last_name,
+                label: "Et votre nom de famille?",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
+                autofocus: true,
+                input_html: { autocomplete: "last_name"} %>
+    <%= f.input :username,
+                label: "Comment voulez-vous qu'on vous appelle?",
+                placeholder: "nom d'utilisateur",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
+                autofocus: true,
+                required: false,
+                input_html: { autocomplete: "username"} %>
+    <%= f.input :email,
+                label: "Comment peut-on vous joindre?",
+                placeholder: "votre.adresse@email.fr",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :address,
+                label: "Quelle est votre adresse? (pour vous envoyer des cartes postales)",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
+                autofocus: true,
+                input_html: { autocomplete: "address"} %>
+    <%= f.input :birthdate,
+                label: "Enfin, quelle est votre date de naissance? (promis, on le garde pour nous)",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
+                autofocus: true,
+                input_html: { autocomplete: "birthdate"} %>
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Laissez vide si vous ne voulez pas en changer.",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "Merci de saisir votre mot de passe pour confirmer les modifications",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Mettre à jour", class: "btn-blue" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>Supprimer votre compte</h3>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<p>Vous voulez nous quitter? <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Sûr-sûr?" }, method: :delete %></p>
 
-<%= link_to "Back", :back %>
+<%= link_to "Retour", :back %>
