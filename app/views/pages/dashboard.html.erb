@@ -1,0 +1,16 @@
+<h4>Bienvenue, </h2>
+<%= cl_image_tag current_user.photo.key, class: "avatar" if current_user.photo.attached? %>
+<%= current_user.username %>
+
+<ul>
+  <li>
+    <%= link_to "Mon compte", account_path %>
+  </li>
+  <li>
+    <%= link_to "Contactez-nous", "" %>
+    <!-- faire un formulaire de contact -->
+  </li>
+  <li>
+    <%= link_to "Mentions légales", "" %>
+  </li>
+</ul>
