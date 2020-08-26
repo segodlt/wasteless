@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :measures, only: [ :new, :create ]
   end
   resources :reviews, only: [:edit, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
 
   resources :categories, only: [:index, :show]
   resources :ingredients, only: [:index, :show]

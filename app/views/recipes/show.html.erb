@@ -1,5 +1,13 @@
 <h2><%= @recipe.title %></h2>
 <p><%= @recipe.description %></p>
+<% if current_user %>
+	<% if @favorite %>
+		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
+	<% else %>
+		<%= link_to "Ajouter aux favoris", favorites_path(recipe:@recipe), method: :post %>
+	<% end %>
+<% end %>
+
 <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
 
 <ul>
@@ -27,4 +35,5 @@
 
 <%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
 <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
+<%= link_to "Mes favoris", favorites_path %> |
 <%= link_to "Retour", recipes_path %>
