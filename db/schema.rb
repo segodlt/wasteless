@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2020_08_26_071734) do
     t.string "alert"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "nature"
   end
 
   create_table "measures", force: :cascade do |t|
