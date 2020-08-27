@@ -1,2 +1,20 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Bienvenu(e) sur Wasteless</h1>
+<p>Recherchez et partagez vos recettes de produits ménagers et bien-être faits maison !</p>
+
+<%= form_tag root_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Recherchez une recette, un ingrédient..."
+  %>
+  <%= submit_tag "Rechercher", class: "btn btn-primary" %>
+<% end %>
+
+
+<div id="recipes">
+	<ul>
+		<% @recipes.each do |recipe| %>
+    		<li><%= recipe.title %></li><br>
+  	<% end %>
+	</ul>
+</div>
