@@ -14,7 +14,7 @@
 <div id="recipes">
 	<ul>
 		<% @recipes.each do |recipe| %>
-    		<li><%= recipe.title %></li><br>
+    		<li><%= link_to recipe.title, recipe_path(recipe) %></li><br>
   	<% end %>
 	</ul>
 </div>
