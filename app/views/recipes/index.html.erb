@@ -1,6 +1,6 @@
 <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.title, recipe_path(recipe) %><%= cl_image_tag(recipe.photos.key, height: 300, width: 400, crop: :fill) if recipe.photos.attached? %></li>
+    <li><%= link_to recipe.title, recipe_path(recipe) %><%= cl_image_tag(recipe.photos.first.key, height: 300, width: 400, crop: :fill) if recipe.photos.attached? %></li><br>
 
   <% end %>
 </ul>
