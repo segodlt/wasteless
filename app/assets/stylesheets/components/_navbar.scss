@@ -11,19 +11,37 @@
   width: 40px;
 }
 
-.navbar {
-  background-color: #3772ff;
+.card-footer {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  padding: 0.5rem 0.5rem;
+  right: 0;
+  left: 0;
 }
 
-li {
-  display: inline-block;
-  text-decoration: none;
+.card-footer ul {
+  justify-content: space-between;
 }
 
-a {
-  color: #f6d0b1;
+.nav-link:focus {
+  background-color: #167FFB;
 }
 
-a:hover {
-  text-decoration: none;
+.nav-link {
+  color: grey;
+  padding: 0.5rem;
+}
+
+.nav-link-active {
+  color: #167FFB;
+}
+
+.nav-link p {
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0,5rem;
+  margin-bottom: 0;
+  font-family: arial;
+  margin-top: 0.5rem;
 }
