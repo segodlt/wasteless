@@ -30,6 +30,7 @@ gem 'cloudinary', '~> 1.12.0'
 # Authorisation with Pundit
 gem 'pundit'
 
+# Authentification to app
 gem 'devise'
 
 # Reduces boot times through caching; required in config/boot.rb
