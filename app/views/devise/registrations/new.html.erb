@@ -40,6 +40,8 @@
                   autofocus: true,
                   input_html: { autocomplete: "address"} %>
       <%= f.input :birthdate,
+                  as: :date,
+                  html5: true,
                   label: "Enfin, quelle est votre date de naissance? (promis, on le garde pour nous)",
                   autofocus: true,
                   input_html: { autocomplete: "birthdate"} %>

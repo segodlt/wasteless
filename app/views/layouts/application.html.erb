@@ -10,18 +10,19 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
 
-   <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
   </head>
 
   <body>
-    <ul class="hmenu">
-      <%= render 'devise/menu/registration_items' %>
-      <%= render 'devise/menu/login_items' %>
-    </ul>
-    <div class="content-wrapper">
-      <%= yield %>
+      <div class="content-wrapper">
+        <ul class="hmenu">
+          <%= render 'devise/menu/registration_items' %>
+          <%= render 'devise/menu/login_items' %>
+        </ul>
+
+        <%= yield %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= render 'layouts/navbar' %>
     </div>
-    <%= render 'layouts/navbar' %>
   </body>
 </html>
