@@ -1,8 +1,8 @@
 <ul>
   <% @favorites.each do |favorite| %>
-    <li><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></li>
+    <li><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %><%= cl_image_tag(favorite.recipe.photos.first.key, height: 300, width: 400, crop: :fill) if favorite.recipe.photos.attached? %></li>
 
   <% end %>
 </ul>
 
-<%= link_to "Retour", recipes_path %>
+<%= link_to "Retour", root_path %>

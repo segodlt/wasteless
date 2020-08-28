@@ -1,9 +1,15 @@
-<% if user_signed_in? %>
-  <li>
-  <%= link_to('Déconnexion', destroy_user_session_path) %>
-  </li>
-<% else %>
-  <li>
-  <%= link_to('Connexion', new_user_session_path) %>
-  </li>
-<% end %>
+<div>
+  <% if user_signed_in? %>
+    <li>
+      <%= link_to destroy_user_session_path do %>
+        <i class="fas fa-sign-out-alt"></i>
+      <% end %>
+    </li>
+  <% else %>
+    <li>
+      <%= link_to new_user_session_path do %>
+        <i class="fas fa-sign-in-alt"></i>
+      <% end %>
+    </li>
+  <% end %>
+</div>

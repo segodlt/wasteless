@@ -1,14 +1,14 @@
 .btn-blue {
-  background-color: #3772ff;
-  color: #f6d0b1;
-  padding: 10px;
+  background-color: var(--wgreen);
+  color: #ffffff;
+  padding: 0.45rem;
   border-radius: 10px;
-  border: solid 1px #f6d0b1;
+  border: solid 1px #ffffff;
 }
 
 .btn-blue:hover {
-  border: solid 1px #3772ff;
-  color: #3772ff;
-  background-color: #f6d0b1;
+  border: solid 1px var(--wgreen);
+  color: var(--wgreen);
+  background-color: #ffffff;
   transition: all 300ms ease-in-out;
 }

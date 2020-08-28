@@ -1,29 +1,35 @@
-.navbar-lewagon {
+.card-footer {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  padding: 0.5rem 0.5rem;
+  right: 0;
+  left: 0;
+}
+
+.card-footer ul {
   justify-content: space-between;
-  background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.nav-link:focus {
+  background-color: var(--wblue);
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+
+.nav-link {
+  color: grey;
+  padding: 0.5rem;
 }
 
-.navbar {
-  background-color: #3772ff;
+.nav-link-active {
+  color: var(--wblue);
 }
 
-// li {
-//   display: inline-block;
-//   text-decoration: none;
-// }
-
-a {
-  color: #f6d0b1;
-}
-
-a:hover {
-  text-decoration: none;
+.nav-link p {
+  font-size: 0.75rem;
+  text-align: center;
+  padding: 0,5rem;
+  margin-bottom: 0;
+  font-family: arial;
+  margin-top: 0.5rem;
 }

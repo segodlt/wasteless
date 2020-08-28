@@ -3,7 +3,9 @@ class Recipe < ApplicationRecord
   belongs_to :category
   has_many :reviews, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many_attached :photos, dependent: :destroy
   has_many :measures, dependent: :destroy
+  has_many :ingredients, through: :measures
   accepts_nested_attributes_for :measures
 
   validates :title, :description, presence: true
