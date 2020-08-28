@@ -1,55 +1,61 @@
-<div>
-  <h2>Inscription</h2>
+<div class="container form">
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 col-sm-offset-4">
+      <h2>Inscription</h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <%= f.input :first_name,
-                  label: "Quel est votre prénom?",
-                  autofocus: true,
-                  input_html: { autocomplete: "first_name"} %>
-      <%= f.input :last_name,
-                  label: "Et votre nom de famille?",
-                  autofocus: true,
-                  input_html: { autocomplete: "last_name"} %>
-      <%= f.input :username,
-                  label: "Comment voulez-vous qu'on vous appelle?",
-                  placeholder: "nom d'utilisateur",
-                  autofocus: true,
-                  required: true,
-                  input_html: { autocomplete: "username"} %>
-      <%= f.input :email,
-                  label: "Comment peut-on vous joindre?",
-                  placeholder: "votre.adresse@email.fr",
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  label: "Choisissez votre mot de passe.",
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  label: "Confirmez votre choix.",
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :photo, as: :file %>
-      <%= f.input :address,
-                  label: "Quelle est votre adresse? (pour vous envoyer des cartes postales)",
-                  autofocus: true,
-                  input_html: { autocomplete: "address"} %>
-      <%= f.input :birthdate,
-                  label: "Enfin, quelle est votre date de naissance? (promis, on le garde pour nous)",
-                  autofocus: true,
-                  input_html: { autocomplete: "birthdate"} %>
+        <div class="form-inputs">
+          <%= f.input :first_name,
+                      label: "Quel est votre prénom?",
+                      autofocus: true,
+                      input_html: { autocomplete: "first_name"} %>
+          <%= f.input :last_name,
+                      label: "Et votre nom de famille?",
+                      autofocus: true,
+                      input_html: { autocomplete: "last_name"} %>
+          <%= f.input :username,
+                      label: "Comment voulez-vous qu'on vous appelle?",
+                      placeholder: "nom d'utilisateur",
+                      autofocus: true,
+                      required: true,
+                      input_html: { autocomplete: "username"} %>
+          <%= f.input :email,
+                      label: "A quelle adresse peut-on vous envoyer un mail?",
+                      placeholder: "votre.adresse@email.fr",
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" }%>
+          <%= f.input :password,
+                      label: "Choisissez votre mot de passe.",
+                      required: true,
+                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :password_confirmation,
+                      label: "Confirmez votre choix.",
+                      required: true,
+                      input_html: { autocomplete: "new-password" } %>
+          <%= f.input :photo, as: :file %>
+          <%= f.input :address,
+                      label: "Quelle est votre adresse? (pour vous envoyer des cartes postales)",
+                      autofocus: true,
+                      input_html: { autocomplete: "address"} %>
+          <%= f.input :birthdate,
+                      as: :date,
+                      html5: true,
+                      label: "Enfin, quelle est votre date de naissance? (promis, on le garde pour nous)",
+                      autofocus: true,
+                      input_html: { autocomplete: "birthdate"} %>
 
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Enregistrer", class: "btn-blue" %>
+        </div>
+      <%= render "devise/shared/links" %>
+      <% end %>
     </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Enregistrer", class: "btn-blue" %>
-    </div>
-  <%= render "devise/shared/links" %>
-  <% end %>
+  </div>
 </div>
 
