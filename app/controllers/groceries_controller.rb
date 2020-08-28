@@ -1,7 +1,7 @@
 class GroceriesController < ApplicationController
-	# def index
- #    @groceries = policy_scope(Grocery).where(user_id:current_user.id)
- #  end
+	def index
+    @groceries = policy_scope(Grocery).where(user_id:current_user.id)
+  end
 
  #  def create
  #  	@measure = Measure.find(params[:measure])
