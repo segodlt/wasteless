@@ -2,7 +2,7 @@
   h1 {
     font-size: 2rem;
     font-family: 'Amatic SC', cursive;
-    color: var(--wgreen);
+    color: white;
     text-align: center;
     padding-top: 2rem;
   }
@@ -17,7 +17,11 @@
   }
 
   #query {
-    font-size: 0.75rem;
+    background: image-url("search-solid.svg") no-repeat scroll 7px 7px;
+    padding-left:30px;
+    background-size: 1.2rem;
+    opacity: 0.85;
+    font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.5;
     color: var(--wblue);
@@ -27,8 +31,8 @@
     border-radius: 5px;
     width: 100%;
     margin-right: 10px;
-    padding-right: 3px;
-    padding-left: 3px;
+    padding: 0;
+    height: 2rem;
     text-align: center;
 
     #placeholder {
