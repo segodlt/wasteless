@@ -1,8 +1,9 @@
 <%= simple_form_for(@recipe) do |f| %>
 	<%= f.association :category, as: :radio_buttons %>
-  <%= f.label :title %>
+  <%= f.label :title, "Titre" %>
   <%= f.text_field :title %>
-  <%= f.label :description %>
+  <%= f.label :description, "Description" %>
   <%= f.text_field :description %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
 <% end %>
