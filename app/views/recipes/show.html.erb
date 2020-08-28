@@ -3,6 +3,11 @@
 	<%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
 <% end %>
 <p><%= @recipe.description %></p>
+<% @recipe.measures.each do |measure| %>
+  <p><%= measure.ingredient.name %></p>
+  <p> <%= measure.quantity %> <%= measure.ingredient.unit %></p>
+  <p></p>
+<% end %>
 <% if current_user %>
 	<% if @favorite %>
 		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
