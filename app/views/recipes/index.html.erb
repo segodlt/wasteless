@@ -1,9 +1,27 @@
 <ul>
   <% @recipes.each do |recipe| %>
-    <li><%= link_to recipe.title, recipe_path(recipe) %></li>
+    <li>
+      <div class="card-recipe" style="width: 18rem;">
+        <img src="https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=759&q=80" class="card-img-top" alt="recipe">
+        <div class="card-body">
+          <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %><</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Cras justo odio</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </li>
 
   <% end %>
 </ul>
+
 
 
 <% if policy(Recipe).create? %>

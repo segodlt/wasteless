@@ -1,0 +1,20 @@
+#recipes li {
+  list-style: none;
+}
+.card-recipe {
+  margin-top: 2rem;
+  width: 9rem;
+
+  a {
+    font-size: 1rem;
+  }
+}
+
+.card-body {
+  display: inline;
+  padding: 7px;
+}
+
+.card-img {
+    border-radius: 5px;
+  }
