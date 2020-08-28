@@ -1,9 +1,16 @@
 
-
 require "nokogiri"
 require "open-uri"
 
+Recipe.destroy_all
 Ingredient.destroy_all
+Category.destroy_all
+
+puts "Destroy categories"
+cosmétiques = Category.create!(name: "Cosmétiques")
+entretien_maison = Category.create!(name: "Entretien maison")
+santé = Category.create!(name: "Santé et bien-être")
+puts "categories created"
 
 puts "Destroy database"
 
