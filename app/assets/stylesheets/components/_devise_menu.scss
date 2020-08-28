@@ -1,9 +1,12 @@
 ul.hmenu {
   list-style: none;
-  margin: 0 0 2em;
+  margin: 0.5em;
   padding: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 ul.hmenu li {
   display: inline;
+  font-size: 0.75rem;
 }
