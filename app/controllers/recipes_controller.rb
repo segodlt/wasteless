@@ -20,7 +20,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
+    new_params = recipe_params
+    new_params[:measures_attributes].delete("0")
+
+    @recipe = Recipe.new(new_params)
     @recipe.user = current_user
     authorize @recipe
     if @recipe.save
