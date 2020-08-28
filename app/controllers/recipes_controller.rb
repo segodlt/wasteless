@@ -1,6 +1,5 @@
 class RecipesController < ApplicationController
-
-	def index
+  def index
     @recipes = policy_scope(Recipe).order(created_at: :desc)
   end
 
@@ -8,11 +7,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @favorite = @recipe.favorites.where(user_id:current_user.id).first
     authorize @recipe
+
     @review = Review.new
   end
 
-	def new
+  def new
     @recipe = Recipe.new
+    @recipe.measures.build
     authorize @recipe
   end
 
@@ -21,7 +22,7 @@ class RecipesController < ApplicationController
     @recipe.user = current_user
     authorize @recipe
     if @recipe.save
-    	redirect_to recipe_path(@recipe)
+      redirect_to recipe_path(@recipe)
     else
       render :new
     end
@@ -49,6 +50,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :description, :category_id)
+    params.require(:recipe).permit(:title, :description, :category_id, measures_attributes: [:id, :ingredient_id, :quantity, :required])
   end
 end

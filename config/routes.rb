@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :categories, only: [:index, :show]
   resources :ingredients, only: [:index, :show]
+  get "api/ingredients", to: "ingredients#create_json"
 end

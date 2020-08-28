@@ -1,8 +1,38 @@
+
 <%= simple_form_for(@recipe) do |f| %>
 	<%= f.association :category, as: :radio_buttons %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <%= f.label :description %>
   <%= f.text_field :description %>
+
+  <div>
+    <p>Ingrédients</p>
+    <div id="base_ingredient" class="d-none">
+      <%= f.simple_fields_for :measures do |m| %>
+        <%= m.input :ingredient_id, collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
+        <%= m.input :quantity %>
+        <span class="display-unit"></span>
+
+        <%= m.input :required %>
+      <% end %>
+    </div>
+    <div id="first_ingredient">
+      <%= f.simple_fields_for :measures do |m| %>
+        <%= m.input :ingredient_id, collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
+        <%= m.input :quantity %>
+        <span class="display-unit"></span>
+
+        <%= m.input :required %>
+      <% end %>
+    </div>
+  </div>
+  <i class="fas fa-plus next-element"></i>
+
+
+
+
+
   <%= f.submit %>
 <% end %>
+

@@ -17,6 +17,14 @@ class MeasuresController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:recipe_id])
+    @measure = Measure.find(params[:id])
+    authorize @measure
+    @measure.destroy
+    redirect_to recipe_path(@recipe)
+  end
+
   private
   def measure_params
     params.require(:measure).permit(:quantity, :required, :ingredient_id)
