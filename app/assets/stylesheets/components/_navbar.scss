@@ -12,7 +12,7 @@
 }
 
 .nav-link:focus {
-  background-color: #167FFB;
+  background-color: var(--wblue);
 }
 
 .nav-link {
@@ -21,7 +21,7 @@
 }
 
 .nav-link-active {
-  color: #167FFB;
+  color: var(--wblue);
 }
 
 .nav-link p {

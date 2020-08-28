@@ -2,14 +2,14 @@
   h1 {
     font-size: 2rem;
     font-family: 'Amatic SC', cursive;
-    color: #6adcd1;
+    color: var(--wgreen);
     text-align: center;
     padding-top: 2rem;
   }
   p {
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
-    color: #6adcd1;
+    color: var(--wgreen);
     text-align: center;
   }
   .form-inline{
@@ -20,7 +20,7 @@
     font-size: 0.75rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #072ac8;
+    color: var(--wblue);
     background-color: #fff;
     background-clip: padding-box;
     border: 0;
@@ -32,7 +32,7 @@
     text-align: center;
 
     #placeholder {
-      color: #072ac8;
+      color: var(--wblue);
     }
   }
   .research {
