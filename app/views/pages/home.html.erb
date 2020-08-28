@@ -21,9 +21,25 @@
 <div class="container">
   <div id="recipes">
   	<ul>
-		<% @recipes.each do |recipe| %>
-    		<li><%= link_to recipe.title, recipe_path(recipe) %><%= cl_image_tag(recipe.photos.first.key, height: 300, width: 400, crop: :fill) if recipe.photos.attached? %></li><br>
-  	<% end %>
-	  </ul>
+  		<% @recipes.each do |recipe| %>
+      		<li>
+            <div class="card-recipe">
+              <img src="https://images.unsplash.com/photo-1547516508-4c1f9c7c4ec3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=759&q=80" class="card-img-top" alt="recipe">
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %></h5>
+                <p class="card-text">
+                  <% if recipe.average_rating > 0 %>
+                    <p><%= "★" * recipe.average_rating %><%= "☆" * (5 - recipe.average_rating) %></p>
+                  <% else %>
+                    <%= "" %>
+                  <% end %></p>
+              </div>
+              <div class="card-body">
+                <a href="#" class="card-link">❤️</a>
+              </div>
+            </div>
+          </li>
+    	<% end %>
+  	</ul>
   </div>
 </div>
