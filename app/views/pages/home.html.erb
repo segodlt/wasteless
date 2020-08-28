@@ -24,7 +24,7 @@
   		<% @recipes.each do |recipe| %>
       		<li>
             <div class="card-recipe">
-              <%= cl_image_tag(recipe.photos.first.key, height: 300, width: 400, crop: :fill) if recipe.photos.attached? %>
+              <%= cl_image_tag(recipe.photos.first.key, width: 350, crop: :fill) if recipe.photos.attached? %>
               <div class="card-body">
                 <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %></h5>
                 <p class="card-text">
