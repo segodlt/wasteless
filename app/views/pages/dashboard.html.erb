@@ -4,8 +4,12 @@
       <h4>Bienvenue, </h2>
     </div>
     <div>
-      <%= cl_image_tag current_user.photo.key, width: 80, height: 80, crop: :fill, class: "avatar" if current_user.photo.attached? %>
-      <%= current_user.username %>
+      <% if user_signed_in? %>
+          <%= cl_image_tag current_user.photo.key, width: 80, height: 80, crop: :fill, class: "avatar" if current_user.photo.attached? %>
+          <%= current_user.username %>
+        <% else %>
+          <h6>cher utilisateur</h6>
+        <% end %>
     </div>
   </div>
 
