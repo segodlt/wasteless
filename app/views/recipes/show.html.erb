@@ -1,54 +1,62 @@
-<h2><%= @recipe.title %></h2>
-<% @recipe.photos.each do |photo| %>
-	<%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
-<% end %>
-<p><%= @recipe.description %></p>
-<% @recipe.measures.each do |measure| %>
-  <p><%= measure.ingredient.name %></p>
-  <p> <%= measure.quantity %> <%= measure.ingredient.unit %></p>
-  <p></p>
-<% end %>
-<% if current_user %>
-	<% if @favorite %>
-		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
-	<% else %>
-		<%= link_to "Ajouter aux favoris", favorites_path(recipe:@recipe), method: :post %>
-	<% end %>
-<% end %>
-
-<%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
-
-<ul>
-  <% @recipe.reviews.each do |review| %>
-    <li><%= review.rating %></li>
-    <li><%= review.content %></li>
-    <li>
-    	<% if policy(review).edit? %>
-		  	<%= link_to "Modifier", edit_review_path(review, anchor:"review-form") %>
-		  <% end %>
-    </li>
-    <li><%= link_to "Effacer", review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %></li>
+<div class="container">
+  <h2><%= @recipe.title %></h2>
+  <% @recipe.photos.each do |photo| %>
+  	<%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
   <% end %>
-</ul>
+  <p><%= @recipe.description %></p>
+  <% @recipe.measures.each do |measure| %>
+    <p><%= measure.ingredient.name %></p>
+    <p> <%= measure.quantity %> <%= measure.ingredient.unit %></p>
+    <p></p>
+  <% end %>
+  <% if current_user %>
+  	<% if @favorite %>
+  		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
+  	<% else %>
+  		<%= link_to "Ajouter aux favoris", favorites_path(recipe:@recipe), method: :post %>
+  	<% end %>
+  <% end %>
 
-<!-- Formulaire d'ajout de review -->
-<br>
-<div id="review-form">
-	<%= simple_form_for [ @recipe, @review ] do |f| %>
-		<% if @review.errors.any? %>
-			<%= @review.errors.full_messages %>
-		<% end %>
-	  <%= f.input :rating %>
-	  <%= f.input :content %>
-	  <%= f.submit "Valider votre avis" %>
-	<% end %>
+  <% if user_signed_in? %>
+    <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
+  <% end %>
+
+  <ul>
+    <% @recipe.reviews.each do |review| %>
+      <li><%= review.rating %></li>
+      <li><%= review.content %></li>
+      <li>
+      	<% if policy(review).edit? %>
+  		  	<%= link_to "Modifier", edit_review_path(review, anchor:"review-form") %>
+  		  <% end %>
+      </li>
+      <li><%= link_to "Effacer", review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %></li>
+    <% end %>
+  </ul>
+
+  <!-- Formulaire d'ajout de review -->
+  <br>
+  <% if user_signed_in? && !current_user %>
+    <div id="review-form">
+    	<%= simple_form_for [ @recipe, @review ] do |f| %>
+    		<% if @review.errors.any? %>
+    			<%= @review.errors.full_messages %>
+    		<% end %>
+    	  <%= f.input :rating %>
+    	  <%= f.input :content %>
+    	  <%= f.submit "Valider votre avis" %>
+    	<% end %>
+    </div>
+  <% end %>
+  <br>
+
+
+  <% if policy(@recipe).edit? %>
+  	<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
+  <% end %>
+  <% if policy(@recipe).destroy? %>
+    <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
+  <% end %>
+  <%#= link_to "Mes favoris", favorites_path %>
+  <%= link_to "Retour", root_path %>
 </div>
-<br>
-
-
-<% if policy(@recipe).edit? %>
-	<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
-<% end %>
-<%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
-<%= link_to "Mes favoris", favorites_path %> |
-<%= link_to "Retour", recipes_path %>
