@@ -5,11 +5,6 @@ class MeasuresController < ApplicationController
     authorize @measure
   end
 
-  def listed?
-    @measure = Measure.find(params[:id])
-    @measure.listed = true
-    @measure.save
-  end
 
   def create
     @recipe = Recipe.find(params[:recipe_id])

@@ -1,0 +1,29 @@
+.recipe_show h2 {
+  font-family: 'Amatic SC', cursive;
+  color: var(--wgreen);
+  text-align: center;
+}
+
+.recipe_show img {
+  height: 50%;
+  width: 100%;
+  display: block;
+}
+
+#measures_list {
+  margin-top: 2rem;
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.85rem;
+}
+
+#description {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1rem;
+}
+
+#favorite_icon {
+  display: block;
+  text-align: right;
+  margin-right: 2rem;
+}

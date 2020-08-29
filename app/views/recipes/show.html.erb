@@ -1,25 +1,39 @@
-<div class="container">
+<div class="container recipe_show">
   <h2><%= @recipe.title %></h2>
+
+  <div id="favorite_icon">
+    <% if current_user %>
+    	<% if @favorite %>
+    		<%= link_to favorite_path(@favorite), method: :delete do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+    	<% else %>
+    		<%= link_to favorites_path(recipe:@recipe), method: :post do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+    	<% end %>
+    <% end %>
+  </div>
+
   <% @recipe.photos.each do |photo| %>
   	<%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
   <% end %>
-  <p><%= @recipe.description %></p>
   <% @recipe.measures.each do |measure| %>
-    <p> <%= simple_form_for :measures do |f| %>
-          <label for="listed"><i class="fas fa-cart-arrow-down"></i></label> <%= f.check_box :listed? %>
+    <div id="measures_list">
+      <div>
+        <%= link_to groceries_path(recipe:@recipe), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
+          <i class="fas fa-cart-arrow-down"></i>
         <% end %>
-      <%= measure.quantity %> <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
-    <p></p>
+      </div>
+      <div>
+        <p> <%= measure.quantity %> <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
+      </div>
+    </div>
   <% end %>
 
+  <p id="description"><%= @recipe.description %></p>
 
-  <% if current_user %>
-  	<% if @favorite %>
-  		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
-  	<% else %>
-  		<%= link_to "Ajouter aux favoris", favorites_path(recipe:@recipe), method: :post %>
-  	<% end %>
-  <% end %>
+
 
   <% if user_signed_in? %>
     <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
