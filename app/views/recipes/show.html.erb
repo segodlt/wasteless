@@ -5,10 +5,14 @@
   <% end %>
   <p><%= @recipe.description %></p>
   <% @recipe.measures.each do |measure| %>
-    <p><%= measure.ingredient.name %></p>
-    <p> <%= measure.quantity %> <%= measure.ingredient.unit %></p>
+    <p> <%= simple_form_for :measures do |f| %>
+          <label for="listed"><i class="fas fa-cart-arrow-down"></i></label> <%= f.check_box :listed? %>
+        <% end %>
+      <%= measure.quantity %> <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
     <p></p>
   <% end %>
+
+
   <% if current_user %>
   	<% if @favorite %>
   		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
@@ -36,7 +40,7 @@
 
   <!-- Formulaire d'ajout de review -->
   <br>
-  <% if user_signed_in? && !current_user %>
+  <% if user_signed_in? && @recipe.user_id != current_user %>
     <div id="review-form">
     	<%= simple_form_for [ @recipe, @review ] do |f| %>
     		<% if @review.errors.any? %>

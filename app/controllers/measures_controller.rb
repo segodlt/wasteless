@@ -5,6 +5,12 @@ class MeasuresController < ApplicationController
     authorize @measure
   end
 
+  def listed?
+    @measure = Measure.find(params[:id])
+    @measure.listed = true
+    @measure.save
+  end
+
   def create
     @recipe = Recipe.find(params[:recipe_id])
     @measure = Measure.new(measure_params)
@@ -27,6 +33,6 @@ class MeasuresController < ApplicationController
 
   private
   def measure_params
-    params.require(:measure).permit(:quantity, :required, :ingredient_id)
+    params.require(:measure).permit(:quantity, :listed, :required, :ingredient_id)
   end
 end
