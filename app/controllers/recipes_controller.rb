@@ -7,10 +7,10 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @favorite = @recipe.favorites.where(user_id:current_user.id).first
+    @favorite = @recipe.favorites.where(user_id:current_user.id).first if user_signed_in?
     authorize @recipe
 
-    @review = Review.new
+    @review = Review.new if user_signed_in?
   end
 
   def new
@@ -39,9 +39,12 @@ class RecipesController < ApplicationController
   end
 
   def update
+    new_params = recipe_params
+    new_params[:measures_attributes].delete("0")
+
     @recipe = Recipe.find(params[:id])
     authorize @recipe
-    @recipe.update(recipe_params)
+    @recipe.update(new_params)
     redirect_to recipe_path(@recipe)
   end
 
