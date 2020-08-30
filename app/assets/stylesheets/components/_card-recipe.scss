@@ -15,6 +15,13 @@
   padding: 7px;
 }
 
-.card-img {
+.card-recipe img {
     border-radius: 5px;
   }
+
+#favorite_icon {
+  display: block;
+  text-align: right;
+  margin-right: 2rem;
+  width: 250px;
+}

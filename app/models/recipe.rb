@@ -23,4 +23,10 @@ class Recipe < ApplicationRecord
       return 0
     end
   end
+
+  def listed
+    @measure = Measure.find(params[:id])
+    @measure.listed = true
+    @measure.save
+  end
 end

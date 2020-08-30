@@ -23,6 +23,19 @@
   		<% @recipes.order(created_at: :desc).each do |recipe| %>
       		<li>
             <div class="card-recipe">
+              <div id="favorite_icon">
+                <% if current_user %>
+                  <% if @favorite %>
+                    <%= link_to favorite_path(@favorite), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to favorites_path(recipe:@recipe), method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
               <%= cl_image_tag(recipe.photos.first.key, width: 250, crop: :fill) if recipe.photos.attached? %>
               <div class="card-body">
                 <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %></h5>
@@ -32,9 +45,6 @@
                   <% else %>
                     <%= "" %>
                   <% end %></p>
-              </div>
-              <div class="card-body">
-                <a href="#" class="card-link">❤️</a>
               </div>
             </div>
           </li>
