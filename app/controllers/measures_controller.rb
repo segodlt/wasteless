@@ -18,6 +18,15 @@ class MeasuresController < ApplicationController
     end
   end
 
+  def update
+     @recipe = Recipe.find(params[:recipe_id])
+     @measure = Measure.find(params[:id])
+     authorize @measure
+     @measure.update(new_params)
+     @measure.recipe = @recipe
+     redirect_to recipe_path(@recipe)
+  end
+
   def destroy
     @recipe = Recipe.find(params[:recipe_id])
     @measure = Measure.find(params[:id])
@@ -28,6 +37,6 @@ class MeasuresController < ApplicationController
 
   private
   def measure_params
-    params.require(:measure).permit(:quantity, :listed, :required, :ingredient_id)
+    params.require(:measure).permit(:id, :quantity, :listed, :required, :ingredient_id)
   end
 end

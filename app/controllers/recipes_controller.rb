@@ -45,6 +45,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     authorize @recipe
     @recipe.update(new_params)
+    #@recipe.measures.build
     redirect_to recipe_path(@recipe)
   end
 

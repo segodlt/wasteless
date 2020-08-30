@@ -7,7 +7,7 @@ class GroceriesController < ApplicationController
   def create
     @user = current_user
     @recipe = Recipe.find(params[:recipe])
-  	@measure = Measure.find(params[:measure_id])
+  	@measure = Measure.find(params[:id])
     @grocery = Grocery.new(grocery_params)
     authorize @grocery
     @grocery.save
