@@ -39,7 +39,7 @@
               <%= cl_image_tag(recipe.photos.first.key, width: 250, crop: :fill) if recipe.photos.attached? %>
               <div class="card-body">
                 <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %></h5>
-                <p class="card-text">
+                <p class="card-rating">
                   <% if recipe.average_rating > 0 %>
                     <p><%= "★" * recipe.average_rating %><%= "☆" * (5 - recipe.average_rating) %></p>
                   <% else %>

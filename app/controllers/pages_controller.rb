@@ -10,7 +10,6 @@ class PagesController < ApplicationController
   		OR ingredients.name ILIKE :query \
   		"
   		@recipes = Recipe.joins({measures: :ingredient}).joins(:category).where(sql_query, query:"%#{params[:query]}%")
-      # @recipes.
     else
       @recipes = Recipe.all
     end

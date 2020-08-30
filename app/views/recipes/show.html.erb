@@ -39,18 +39,26 @@
     <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
   <% end %>
 
-  <ul>
-    <% @recipe.reviews.each do |review| %>
-      <li><%= review.rating %></li>
-      <li><%= review.content %></li>
-      <li>
-      	<% if policy(review).edit? %>
-  		  	<%= link_to "Modifier", edit_review_path(review, anchor:"review-form") %>
-  		  <% end %>
-      </li>
-      <li><%= link_to "Effacer", review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %></li>
-    <% end %>
-  </ul>
+  <div>
+    <ul>
+      <div class="review-list">
+        <% @recipe.reviews.each do |review| %>
+          <li><%= review.rating %> <%= review.content %>
+            <div class="icon-reviews">
+            	<% if policy(review).edit? %>
+        		  	<%= link_to edit_review_path(review, anchor:"review-form") do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+        		  <% end %>
+              <%= link_to review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </div>
+    </ul>
+  </div>
 
   <!-- Formulaire d'ajout de review -->
   <br>
