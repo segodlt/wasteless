@@ -21,7 +21,7 @@
   <% @recipe.measures.each do |measure| %>
     <div id="measures_list">
       <div>
-        <%= link_to groceries_path(recipe:@recipe), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
+        <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
           <i class="fas fa-cart-arrow-down"></i>
         <% end %>
       </div>

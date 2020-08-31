@@ -40,11 +40,31 @@ class RecipesController < ApplicationController
 
   def update
     new_params = recipe_params
-    new_params[:measures_attributes].delete("0")
-
+    # new_params[:measures_attributes].delete("0")
     @recipe = Recipe.find(params[:id])
+    raise
     authorize @recipe
     @recipe.update(new_params)
+
+    # Créer les nouvelles mesures avec les params
+    new_measure_params = params.select{ |p| p.include?('new_measure_id') }
+    new_measure_params.each do |new_measure_param|
+      new_measure = Measure.new
+      new_measure.recipe = @recipe
+      new_measure.ingredient_id = new_measure_param[1]
+
+      new_measure_number = new_measure_param[0].split('_').last
+      new_measure.quantity = params["new_measure_quantity_#{new_measure_number}"]
+
+      params_required = params["new_measure_required_#{new_measure_number}"]
+      if params_required
+        new_measure.required = true
+      else
+        new_measure.required = false
+      end
+      new_measure.save
+    end
+
     #@recipe.measures.build
     redirect_to recipe_path(@recipe)
   end
