@@ -14,10 +14,19 @@
 
   <body>
       <div class="content-wrapper">
-        <ul class="hmenu">
-          <%= render 'devise/menu/login_items' %>
-        </ul>
-
+        <div class="dropdown" id="avatar-home">
+          <% if user_signed_in? %>
+              <%= cl_image_tag current_user.photo.key, width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} if current_user.photo.attached? %>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <%= link_to "Déconnexion", destroy_user_session_path, class:"dropdown-item"%>
+                </div>
+            <% else %>
+              <%= cl_image_tag "ksklzyapqn0zcabbqsmm", width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                  <%= link_to "Connexion", new_user_session_path, class:"dropdown-item"%>
+                </div>
+            <% end %>
+        </div>
         <%= yield %>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>

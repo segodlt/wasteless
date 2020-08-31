@@ -18,4 +18,8 @@ class FavoritesController < ApplicationController
     @favorite.destroy
   	redirect_to recipe_path(@favorite.recipe), notice: "Vous avez supprimé #{@favorite.recipe.title} à vos favoris."
   end
+
+  def favorite_params
+    params.require(:favorite).permit(:id)
+  end
 end
