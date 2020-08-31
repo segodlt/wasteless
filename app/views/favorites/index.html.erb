@@ -1,38 +1,43 @@
+<h4>Mes favoris</h4>
+
 <div class="container">
   <div id="recipes">
-    <ul style="list-style-type: none;">
-      <% @favorites.each do |favorite| %>
+    <% if @favorites.empty? %>
+      <p>Ajoutez vos recettes préférées en favoris en cliquant sur <i class="fas fa-heart"></i> !</p>
+    <% else %>
+      <ul style="list-style-type: none;">
+        <% @favorites.each do |favorite| %>
 
-        <li>
-          <div class="card-recipe">
-            <div id="favorite_icon">
-              <% if current_user %>
-                <% if @favorite %>
-                  <%= link_to favorite_path(@favorite), method: :delete do %>
-                    <i class="fas fa-heart"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to favorites_path(recipe:@recipe), method: :post do %>
-                    <i class="far fa-heart"></i>
+          <li>
+            <div class="card-recipe">
+              <div id="favorite_icon">
+                <% if current_user %>
+                  <% if @favorite %>
+                    <%= link_to favorite_path(@favorite), method: :delete do %>
+                      <i class="fas fa-heart"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to favorites_path(recipe:@recipe), method: :post do %>
+                      <i class="far fa-heart"></i>
+                    <% end %>
                   <% end %>
                 <% end %>
-              <% end %>
-            </div>
-            <%= cl_image_tag(favorite.recipe.photos.first.key, width: 250, crop: :fill) if favorite.recipe.photos.attached? %>
-              <div class="card-body">
-                <h5 class="card-title"><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></h5>
-                <p class="card-text">
-                  <% if favorite.recipe.average_rating > 0 %>
-                    <p><%= "★" * favorite.recipe.average_rating %><%= "☆" * (5 - favorite.recipe.average_rating) %><%= " (#{favorite.recipe.reviews.count} avis)" %></p>
-                  <% else %>
-                    <%= "" %>
-                  <% end %></p>
               </div>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-
+              <%= cl_image_tag(favorite.recipe.photos.first.key, width: 250, crop: :fill) if favorite.recipe.photos.attached? %>
+                <div class="card-body">
+                  <h5 class="card-title"><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></h5>
+                  <p class="card-text">
+                    <% if favorite.recipe.average_rating > 0 %>
+                      <p><%= "★" * favorite.recipe.average_rating %><%= "☆" * (5 - favorite.recipe.average_rating) %><%= " (#{favorite.recipe.reviews.count} avis)" %></p>
+                    <% else %>
+                      <%= "" %>
+                    <% end %></p>
+                </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>
 
