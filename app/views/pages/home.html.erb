@@ -28,8 +28,8 @@
                     <% if current_user %>
                       <% if recipe.favorites.any? %>
                         <%= link_to favorite_path(recipe.favorites.first), method: :delete do %>
-                        <i class="fas fa-heart icon"></i>
-                      <% end %>
+                          <i class="fas fa-heart icon"></i>
+                        <% end %>
                       <% else %>
                         <%= llink_to favorites_path(recipe: recipe), method: :post do %>
                           <i class="far fa-heart icon"></i>
@@ -43,9 +43,8 @@
                     <% else %>
                       <%= "" %>
                     <% end %>
-                  <% end %>
-                <% end %>
-              </div>
+                  <%# end %>
+                  </div>
               <%= cl_image_tag(recipe.photos.first.key, width: 250, crop: :fill) if recipe.photos.attached? %>
               <div class="card-body">
                 <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %></h5>
@@ -63,5 +62,6 @@
             </div>
           </div>
             <% end %>
-    <% end %>
+          <% end %>
+        <% end %>
 </div>
