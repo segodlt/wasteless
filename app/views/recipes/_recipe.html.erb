@@ -1,4 +1,4 @@
-<div>
+<div class="recipe-form">
   <div id='action' data-action='<%= params[:controller] %>_<%= params[:action] %>'></div>
   <%= simple_form_for(@recipe) do |f| %>
   	<%= f.association :category, as: :radio_buttons %>
