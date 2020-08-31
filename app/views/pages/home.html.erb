@@ -39,20 +39,20 @@
                 </div>
                 <div class="card-rating">
                   <% if recipe.average_rating > 0 %>
-                    <p><%= "★" * recipe.average_rating %><%= "☆" * (5 - recipe.average_rating) %> <%= " (#{recipe.reviews.count} avis)" %></p>
+                    <p class = "rating"><%= "★" * recipe.average_rating %><%= "☆" * (5 - recipe.average_rating) %> <%= " (#{recipe.reviews.count} avis)" %></p>
                   <% else %>
                     <%= "" %>
                   <% end %>
                 </div>
+              </div>
+            </div>
+            <div class = "bot">
+              <%= link_to recipe_path(recipe) do %>
+                <h2><%= recipe.title %></h2>
+               <% end %>
             </div>
           </div>
-          <div class = "bot">
-            <%= link_to recipe_path(recipe) do %>
-              <h2><%= recipe.title %></h2>
-             <% end %>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>

@@ -1,3 +1,7 @@
+a {
+  text-decoration: none;
+}
+
 #recipes {
   list-style: none;
   display: flex;
@@ -31,7 +35,7 @@
 
 .card-rating {
   display: block;
-  text-align: left;
+float: inline-end;
 }
 
 
@@ -63,7 +67,12 @@
 
 
 .bot {
-  padding : 10px;
+  padding-left: 10px;
 }// Specific CSS for your home-page
 
 
+.rating {
+  color: white;
+  padding: 10px;
+  padding-top: 50%;
+}
