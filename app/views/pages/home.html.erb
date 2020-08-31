@@ -23,10 +23,18 @@
   <% end %>
 </ul>
 
+<div class="results">
+  <% if params[:query].present? %>
+    <%= "#{@recipes.count} résultat(s)" %>
+  <% else %>
+    <p>Les recettes les plus récentes</p>
+  <% end %>
+</div>
+
 <div class="container">
   <div id="recipes">
     <div class="list-container">
-      <% @recipes.order(created_at: :desc).each do |recipe| %>
+      <% @recipes.each do |recipe| %>
         <div class = "recipe-card">
           <div class = "top">
             <div class="card-category" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("<%= cl_image_path(recipe.photos.first.key, crop: :fill) if recipe.photos.attached? %>")'>
