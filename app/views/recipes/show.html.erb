@@ -15,9 +15,26 @@
     <% end %>
   </div>
 
-  <% @recipe.photos.each do |photo| %>
-  	<%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
-  <% end %>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% @recipe.photos.each_with_index do |photo, index| %>
+      <div class="carousel-item <%= "active" if index == 0 %>">
+        <%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
   <% @recipe.measures.each do |measure| %>
     <div id="measures_list">
       <div>
@@ -33,8 +50,7 @@
 
   <p id="description"><%= @recipe.description %></p>
 
-
-
+  <em><%= "#{@recipe.reviews.count} utilisateurs ont déjà donné leurs avis!" %></em>
   <% if user_signed_in? %>
     <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
   <% end %>
@@ -84,5 +100,5 @@
     <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
   <% end %>
   <%#= link_to "Mes favoris", favorites_path %>
-  <%= link_to "Retour", root_path %>
+  <%= link_to "Retour", "javascript:history.back()" %>
 </div>
