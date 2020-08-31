@@ -26,12 +26,12 @@
               <div class = "favorites">
                 <div id="favorite-icon">
                   <% if current_user %>
-                    <% if @favorite %>
-                      <%= link_to favorite_path(@favorite), method: :delete do %>
-                      <i class="fas fa-heart icon"></i>
-                    <% end %>
+                     <% if recipe.favorites.any? %>
+                       <%= link_to favorite_path(recipe.favorites.first), method: :delete do %>
+                        <i class="fas fa-heart icon"></i>
+                       <% end %>
                     <% else %>
-                      <%= link_to favorites_path(recipe:@recipe), method: :post do %>
+                      <%= link_to favorites_path(recipe: recipe), method: :post do %>
                         <i class="far fa-heart icon"></i>
                       <% end %>
                     <% end %>

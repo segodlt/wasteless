@@ -38,7 +38,7 @@
   <% @recipe.measures.each do |measure| %>
     <div id="measures_list">
       <div>
-        <%= link_to groceries_path(recipe:@recipe), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
+        <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
           <i class="fas fa-cart-arrow-down"></i>
         <% end %>
       </div>
@@ -78,7 +78,7 @@
 
   <!-- Formulaire d'ajout de review -->
   <br>
-  <% if user_signed_in? && @recipe.user_id != current_user %>
+  <% if user_signed_in? && @recipe.user != current_user %>
     <div id="review-form">
     	<%= simple_form_for [ @recipe, @review ] do |f| %>
     		<% if @review.errors.any? %>
