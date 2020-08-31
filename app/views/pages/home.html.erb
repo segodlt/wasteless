@@ -16,6 +16,11 @@
     </div>
   </div>
 </div>
+
+<% @categories.each do |category| %>
+  <%= link_to category.name, root_path(category_id:category.id) %>
+<% end %>
+
 <div class="container">
   <div id="recipes">
     <div class="list-container">

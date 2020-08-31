@@ -2,6 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :dashboard]
 
   def home
+    @categories = Category.all
+    @category = Category.find_by(id:params[:category_id])
   	if params[:query].present?
   		sql_query = " \
   		recipes.title ILIKE :query \
@@ -14,6 +16,10 @@ class PagesController < ApplicationController
 
     else
       @recipes = Recipe.order(created_at: :desc)
+    end
+
+    if params[:category_id].present?
+      @recipes = Recipe.where(category_id:params[:category_id])
     end
   end
 
