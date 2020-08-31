@@ -17,6 +17,7 @@
   </div>
 </div>
 
+
 <div class="list-container">
     <% @recipes.order(created_at: :desc).each do |recipe| %>
         <div class = "recipe-card">
@@ -25,12 +26,12 @@
                 <div class = "favorites">
                   <div id="favorite-icon">
                     <% if current_user %>
-                      <% if @favorite %>
-                        <%= link_to favorite_path(@favorite), method: :delete do %>
+                      <% if recipe.favorites.any? %>
+                        <%= link_to favorite_path(recipe.favorites.first), method: :delete do %>
                         <i class="fas fa-heart icon"></i>
                       <% end %>
                       <% else %>
-                        <%= link_to favorites_path(recipe:@recipe), method: :post do %>
+                        <%= llink_to favorites_path(recipe: recipe), method: :post do %>
                           <i class="far fa-heart icon"></i>
                         <% end %>
                       <% end %>

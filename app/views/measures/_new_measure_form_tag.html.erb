@@ -1,0 +1,4 @@
+<div class="new-measure-form">
+  <%= select_tag :new_measure, options_from_collection_for_select(Ingredient.all, "id", "name") %>
+  <%= number_field_tag(:new_measure_quantity, value = nil, options = {}) %>
+</div>

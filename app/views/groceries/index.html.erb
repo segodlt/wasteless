@@ -1,13 +1,14 @@
 <h4>Liste de courses</h4>
 
 <% @groceries.each do |grocery| %>
-  <p><input type="checkbox" id="groceries_item" value="listed">
-    <label><i class="fas fa-cart-arrow-down"></i> </label>
-      <%= measure.quantity %> <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
+  <p>
+      <%= grocery.measure.quantity %> <%= grocery.measure.ingredient.unit %> - <%= grocery.measure.ingredient.name %>
+      <%= link_to grocery_path(grocery), method: :delete do  %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </p>
     <p></p>
 <% end %>
 
 
 <%= link_to "Retour", recipes_path %>
-<img src="https://media.giphy.com/media/EIiJp9cQ3GeEU/giphy.gif" alt="" width=370>
-<img src="https://media.giphy.com/media/AvUWydnU5FulG/giphy.gif" alt="" width=370>

@@ -6,12 +6,11 @@ class GroceriesController < ApplicationController
 
   def create
     @user = current_user
-    @recipe = Recipe.find(params[:recipe])
-  	@measure = Measure.find(params[:id])
     @grocery = Grocery.new(grocery_params)
+    @grocery.user = @user
     authorize @grocery
     @grocery.save
-    redirect_to recipe_path(@recipe), notice: "Vous avez rajouté #{@grocery.measure.ingredient.name} à votre liste de course."
+    redirect_to recipe_path(@grocery.measure.recipe), notice: "Vous avez rajouté #{@grocery.measure.ingredient.name} à votre liste de course."
   end
 
   def destroy
@@ -23,7 +22,7 @@ class GroceriesController < ApplicationController
 
   private
   def grocery_params
-    params.require(:grocery).permit(measures_attributes: [:id, :ingredient_id, :listed, :quantity, :required])
+    params.require(:grocery).permit(:measure_id, measures_attributes: [:id, :ingredient_id, :listed, :quantity, :required])
 
   end
 end
