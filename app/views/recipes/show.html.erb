@@ -78,7 +78,7 @@
 
   <!-- Formulaire d'ajout de review -->
   <br>
-  <% if user_signed_in? && @recipe.user_id != current_user %>
+  <% if user_signed_in? && @recipe.user != current_user %>
     <div id="review-form">
     	<%= simple_form_for [ @recipe, @review ] do |f| %>
     		<% if @review.errors.any? %>
