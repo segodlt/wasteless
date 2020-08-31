@@ -63,3 +63,25 @@
   background-size: cover;
   background-position: center;
 }
+
+.btn-flat {
+  color: white;
+  padding: 3px 5px;
+  letter-spacing: -1px;
+  display: block;
+  border-radius: 4px;
+  background: rgba(106, 221, 209, 1.000);
+  transition: background 0.3s ease;
+  opacity: 0.8;
+}
+
+.btn-flat:active {
+  background: rgba(106, 221, 209, 1.000);
+  color: white;
+  opacity: 1;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-evenly;
+}
