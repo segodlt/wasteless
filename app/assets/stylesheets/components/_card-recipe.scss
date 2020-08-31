@@ -1,32 +1,63 @@
-#recipes li {
+#recipes {
   list-style: none;
-}
-.card-recipe {
-  margin-top: 2rem;
-  width: 9rem;
-
-  a {
-    font-size: 1rem;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
-.card-body {
-  display: inline;
-  padding: 7px;
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+
 }
 
-.card-recipe img {
-    border-radius: 5px;
-  }
+#favorite-icon {
 
-#favorite_icon {
+
+}
+
+#favorite-icon a {
   display: block;
-  text-align: right;
-  margin-right: 2rem;
-  width: 250px;
+  float: right;
+  padding: 5px;
+}
+
+.icon {
+  color: white;
+  padding: 2px;
+  border-radius: 2px;
+  font-size: 1.5em;
 }
 
 .card-rating {
   display: block;
   text-align: left;
 }
+
+
+.recipe-card {
+  width: 80%;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card h2 {
+  font-size: 1.2em;
+}
+
+.card-category {
+  min-height: 200px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+
+.bot {
+  padding : 10px;
+}// Specific CSS for your home-page
+
+
