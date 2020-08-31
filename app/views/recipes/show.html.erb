@@ -20,7 +20,7 @@
   <div class="carousel-inner">
     <% @recipe.photos.each_with_index do |photo, index| %>
       <div class="carousel-item <%= "active" if index == 0 %>">
-        <%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
+        <%= cl_image_tag(photo.key,crop: :fill) %>
       </div>
     <% end %>
   </div>
@@ -34,7 +34,7 @@
   </a>
 </div>
 
-
+  <p class="recipe-titles">Ingrédients</p>
   <% @recipe.measures.each do |measure| %>
     <div id="measures_list">
       <div>
@@ -48,6 +48,8 @@
       </div>
     </div>
   <% end %>
+
+  <p class="recipe-titles">Instructions</p>
 
   <p id="description"><%= @recipe.description %></p>
 

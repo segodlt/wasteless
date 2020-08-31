@@ -1,3 +1,8 @@
+.container .recipe_show {
+  margin: 0px;
+  padding: 0px;
+}
+
 .recipe_show h2 {
   font-family: 'Amatic SC', cursive;
   font-size: 3em;
@@ -10,10 +15,11 @@
   height: 50%;
   width: 100%;
   display: block;
+  margin: 0px;
+  padding: 0px;
 }
 
 #measures_list {
-  margin-top: 2rem;
   display: flex;
   font-family: 'Open Sans', sans-serif;
   font-size: 0.85rem;
@@ -35,4 +41,9 @@
   font-size: 1.5em;
 }
 
-
+.recipe-titles {
+  padding-top: 10px;
+  font-family: 'Amatic SC';
+  font-size: 1.5em;
+  margin: 0px;
+  }
