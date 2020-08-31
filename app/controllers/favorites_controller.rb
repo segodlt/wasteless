@@ -9,14 +9,14 @@ class FavoritesController < ApplicationController
   	@favorite = Favorite.new(recipe: @recipe, user: @user)
     authorize @favorite
   	@favorite.save
-  	redirect_to recipe_path(@recipe), notice: "Vous avez rajouté #{@recipe.title} à vos favoris."
+  	redirect_back(fallback_location: recipe_path(@recipe), notice: "Vous avez rajouté #{@recipe.title} à vos favoris.")
   end
 
   def destroy
   	@favorite = Favorite.find(params[:id])
     authorize @favorite
     @favorite.destroy
-  	redirect_to recipe_path(@favorite.recipe), notice: "Vous avez supprimé #{@favorite.recipe.title} à vos favoris."
+  	redirect_back(fallback_location: recipe_path(@favorite.recipe), notice: "Vous avez supprimé #{@favorite.recipe.title} de vos favoris.")
   end
 
   def favorite_params
