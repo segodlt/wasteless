@@ -1,6 +1,6 @@
 <div class="container">
   <div id="recipes">
-    <ul>
+    <ul style="list-style-type: none;">
       <% @favorites.each do |favorite| %>
 
         <li>
@@ -18,7 +18,7 @@
                 <% end %>
               <% end %>
             </div>
-            <%= cl_image_tag(favorite.recipe.photos.first.key, width: 250, crop: :fill) if favorite.recipe.photos.attached? %></li>
+            <%= cl_image_tag(favorite.recipe.photos.first.key, width: 250, crop: :fill) if favorite.recipe.photos.attached? %>
               <div class="card-body">
                 <h5 class="card-title"><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></h5>
                 <p class="card-text">
