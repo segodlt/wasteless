@@ -84,5 +84,5 @@
     <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
   <% end %>
   <%#= link_to "Mes favoris", favorites_path %>
-  <%= link_to "Retour", root_path %>
+  <%= link_to "Retour", "javascript:history.back()" %>
 </div>

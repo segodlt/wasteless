@@ -20,7 +20,7 @@
 <div class="container">
   <div id="recipes">
   	<ul>
-  		<% @recipes.order(created_at: :desc).each do |recipe| %>
+  		<% @recipes.each do |recipe| %>
       		<li>
             <div class="card-recipe">
               <div id="favorite_icon">
