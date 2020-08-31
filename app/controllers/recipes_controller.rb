@@ -42,7 +42,6 @@ class RecipesController < ApplicationController
     new_params = recipe_params
     # new_params[:measures_attributes].delete("0")
     @recipe = Recipe.find(params[:id])
-    raise
     authorize @recipe
     @recipe.update(new_params)
 

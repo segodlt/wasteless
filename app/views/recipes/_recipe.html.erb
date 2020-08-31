@@ -22,7 +22,7 @@
       <%= f.simple_fields_for :measures do |m| %>
         <%= m.input :ingredient_id, collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
         <%= m.input :quantity %>
-        <span class="display-unit"></span>
+        <span class="display-unit"><%= m.object.ingredient.unit %></span>
 
         <%= m.input :required %>
       <% end %>
