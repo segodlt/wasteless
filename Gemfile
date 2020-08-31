@@ -40,9 +40,14 @@ gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
 
+
 #Parsing
 gem "httparty"
 gem 'oga', '~> 3.3'
+
+#Dashboard admin
+gem 'rails_admin', '~> 2.0'
+
 
 group :development, :test do
   gem 'pry-byebug'

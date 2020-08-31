@@ -11,9 +11,11 @@ class PagesController < ApplicationController
   		OR categories.name ILIKE :query \
   		OR ingredients.name ILIKE :query \
   		"
-  		@recipes = Recipe.joins({measures: :ingredient}).joins(:category).where(sql_query, query:"%#{params[:query]}%")
+  		@recipes = Recipe.joins({measures: :ingredient}).joins(:category).where(sql_query, query:"%#{params[:query]}%").order(created_at: :desc).uniq
+      # @recipes.
+
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.order(created_at: :desc)
     end
 
     if params[:category_id].present?

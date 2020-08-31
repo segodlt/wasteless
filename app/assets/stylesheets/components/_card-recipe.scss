@@ -1,0 +1,63 @@
+#recipes {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+#favorite-icon {
+
+
+}
+
+#favorite-icon a {
+  display: block;
+  float: right;
+  padding: 5px;
+}
+
+.icon {
+  color: white;
+  padding: 2px;
+  border-radius: 2px;
+  font-size: 1.5em;
+}
+
+.card-rating {
+  display: block;
+  text-align: left;
+}
+
+
+.recipe-card {
+  width: 80%;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-card h2 {
+  font-size: 1.2em;
+}
+
+.card-category {
+  min-height: 200px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+
+.bot {
+  padding : 10px;
+}// Specific CSS for your home-page
+
+

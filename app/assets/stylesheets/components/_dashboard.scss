@@ -1,5 +1,19 @@
 nav {
-  color: #ce4760;
+  background-color: var(--wgreen);
+  color: white;
+  height: 602px;
+  font-family: 'Amatic SC', cursive;
+  width: 45%;
+
+  .dashboard_top, h4 {
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: 'Amatic SC', cursive;
+    margin-left: 0.75rem;
+  }
+  //   h4{
+  //     font-weight: bold;
+  // }
 }
 
 nav ul{
@@ -7,6 +21,8 @@ nav ul{
   display: block;
   padding: 0;
   margin: 0;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 
   li{
     margin-left: 0;
@@ -14,18 +30,19 @@ nav ul{
     //min-width: 13em;
     display:inline-block;
     width: 100%;
+    border-top-color: white;
 
     a{
-      color: #f6d0b1;
-      font-size: 1,2em;
+      color: white;
+      font-weight: bold;
       padding: 1.05em 1em;
       position: relative;
       display:block;
 
       &:hover{
         text-decoration: none;
-        color: #f6d0b1;
-        background-color: #3772ff;
+        color: white;
+        background-color: var(--wblue);
         @include transition(all 0.6s ease);
       }
     }

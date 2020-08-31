@@ -1,6 +1,6 @@
 <div class="home">
   <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1552033931-d249575b5ac1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);" >
-    <h1><strong>Bienvenu(e) sur Wasteless</strong></h1>
+    <h1><strong>Bienvenue sur Wasteless</strong></h1>
     <p>Recherchez et partagez vos recettes de produits ménagers et bien-être faits maison !</p>
 
     <div class="form-inline">
@@ -11,7 +11,6 @@
             class: "form-control",
             placeholder: "Recherchez une recette"
           %>
-          <%= submit_tag "Rechercher", class: "btn-blue" %>
         </div>
       <% end %>
     </div>
@@ -22,12 +21,50 @@
   <%= link_to category.name, root_path(category_id:category.id) %>
 <% end %>
 
-<div class="container">
-  <div id="recipes">
-  	<ul>
-  		<% @recipes.each do |recipe| %>
-      		<li><%= link_to recipe.title, recipe_path(recipe) %></li><br>
-    	<% end %>
-  	</ul>
-  </div>
+<div class="list-container">
+    <% @recipes.order(created_at: :desc).each do |recipe| %>
+        <div class = "recipe-card">
+            <div class = "top">
+              <div class="card-category" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("<%= cl_image_path(recipe.photos.first.key, crop: :fill) if recipe.photos.attached? %>")'>
+                <div class = "favorites">
+                  <div id="favorite-icon">
+                    <% if current_user %>
+                      <% if recipe.favorites.any? %>
+                        <%= link_to favorite_path(recipe.favorites.first), method: :delete do %>
+                        <i class="fas fa-heart icon"></i>
+                      <% end %>
+                      <% else %>
+                        <%= llink_to favorites_path(recipe: recipe), method: :post do %>
+                          <i class="far fa-heart icon"></i>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-rating">
+                    <% if recipe.average_rating > 0 %>
+                      <p><%= "★" * recipe.average_rating %><%= "☆" * (5 - recipe.average_rating) %></p>
+                    <% else %>
+                      <%= "" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+              <%= cl_image_tag(recipe.photos.first.key, width: 250, crop: :fill) if recipe.photos.attached? %>
+              <div class="card-body">
+                <h5 class="card-title"><%= link_to recipe.title, recipe_path(recipe) %></h5>
+                <p class="card-rating">
+                  <% if recipe.average_rating > 0 %>
+                    <p><%= "★" * recipe.average_rating %><%= "☆" * (5 - recipe.average_rating) %><%= " (#{recipe.reviews.count} avis)" %></p>
+                  <% else %>
+                    <%= "" %>
+                  <% end %></p>
+              </div>
+            </div>
+            <div class = "bot">
+             <%= link_to recipe_path(recipe) do %>
+                    <h2><%= recipe.title %></h2>
+                  </div>
+                </div>
+            <% end %>
+    <% end %>
 </div>

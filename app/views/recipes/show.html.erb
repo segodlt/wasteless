@@ -1,46 +1,104 @@
-<h2><%= @recipe.title %></h2>
-<p><%= @recipe.description %></p>
-<% if current_user %>
-	<% if @favorite %>
-		<%= link_to "Supprimer des favoris", favorite_path(@favorite), method: :delete %>
-	<% else %>
-		<%= link_to "Ajouter aux favoris", favorites_path(recipe:@recipe), method: :post %>
-	<% end %>
-<% end %>
+<div class="container recipe_show">
+  <h2><%= @recipe.title %></h2>
 
-<%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
+  <div id="favorite_icon">
+    <% if current_user %>
+    	<% if @favorite %>
+    		<%= link_to favorite_path(@favorite), method: :delete do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+    	<% else %>
+    		<%= link_to favorites_path(recipe:@recipe), method: :post do %>
+          <i class="far fa-heart"></i>
+        <% end %>
+    	<% end %>
+    <% end %>
+  </div>
 
-<ul>
-  <% @recipe.reviews.each do |review| %>
-    <li><%= review.rating %></li>
-    <li><%= review.content %></li>
-    <li>
-    	<% if policy(review).edit? %>
-		  	<%= link_to "Modifier", edit_review_path(review, anchor:"review-form") %>
-		  <% end %>
-    </li>
-    <li><%= link_to "Effacer", review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %></li>
-  <% end %>
-</ul>
 
-<!-- Formulaire d'ajout de review -->
-<br>
-<div id="review-form">
-	<%= simple_form_for [ @recipe, @review ] do |f| %>
-		<% if @review.errors.any? %>
-			<%= @review.errors.full_messages %>
-		<% end %>
-	  <%= f.input :rating %>
-	  <%= f.input :content %>
-	  <%= f.submit "Valider votre avis" %>
-	<% end %>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <% @recipe.photos.each_with_index do |photo, index| %>
+      <div class="carousel-item <%= "active" if index == 0 %>">
+        <%= cl_image_tag(photo.key, height: 300, width: 400, crop: :fill) %>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-<br>
 
 
-<% if policy(@recipe).edit? %>
-	<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
-<% end %>
-<%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
-<%= link_to "Mes favoris", favorites_path %> |
-<%= link_to "Retour", recipes_path %>
+  <% @recipe.measures.each do |measure| %>
+    <div id="measures_list">
+      <div>
+        <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
+          <i class="fas fa-cart-arrow-down"></i>
+        <% end %>
+      </div>
+      <div>
+        <p> <%= measure.quantity %> <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
+      </div>
+    </div>
+  <% end %>
+
+  <p id="description"><%= @recipe.description %></p>
+
+  <em><%= "#{@recipe.reviews.count} utilisateurs ont déjà donné leurs avis!" %></em>
+  <% if user_signed_in? %>
+    <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
+  <% end %>
+
+  <div>
+    <ul>
+      <div class="review-list">
+        <% @recipe.reviews.each do |review| %>
+          <li><%= review.rating %> <%= review.content %>
+            <div class="icon-reviews">
+            	<% if policy(review).edit? %>
+        		  	<%= link_to edit_review_path(review, anchor:"review-form") do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+        		  <% end %>
+              <%= link_to review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      </div>
+    </ul>
+  </div>
+
+  <!-- Formulaire d'ajout de review -->
+  <br>
+  <% if user_signed_in? && @recipe.user_id != current_user %>
+    <div id="review-form">
+    	<%= simple_form_for [ @recipe, @review ] do |f| %>
+    		<% if @review.errors.any? %>
+    			<%= @review.errors.full_messages %>
+    		<% end %>
+    	  <%= f.input :rating %>
+    	  <%= f.input :content %>
+    	  <%= f.submit "Valider votre avis" %>
+    	<% end %>
+    </div>
+  <% end %>
+  <br>
+
+
+  <% if policy(@recipe).edit? %>
+  	<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
+  <% end %>
+  <% if policy(@recipe).destroy? %>
+    <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
+  <% end %>
+  <%#= link_to "Mes favoris", favorites_path %>
+  <%= link_to "Retour", "javascript:history.back()" %>
+</div>

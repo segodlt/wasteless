@@ -1,7 +1,14 @@
-<ul>
-  <% @groceries.each do |grocery| %>
+<h4>Liste de courses</h4>
 
-  <% end %>
-</ul>
+<% @groceries.each do |grocery| %>
+  <p>
+      <%= grocery.measure.quantity %> <%= grocery.measure.ingredient.unit %> - <%= grocery.measure.ingredient.name %>
+      <%= link_to grocery_path(grocery), method: :delete do  %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
+    </p>
+    <p></p>
+<% end %>
+
 
 <%= link_to "Retour", recipes_path %>
