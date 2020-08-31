@@ -2,7 +2,8 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :dashboard]
 
   def home
-    @category = Category.find(category_id:params[:category_id])
+    @categories = Category.all
+    @category = Category.find_by(id:params[:category_id])
   	if params[:query].present?
   		sql_query = " \
   		recipes.title ILIKE :query \
