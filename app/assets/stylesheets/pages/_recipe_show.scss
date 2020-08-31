@@ -1,7 +1,9 @@
 .recipe_show h2 {
   font-family: 'Amatic SC', cursive;
+  font-size: 3em;
   color: var(--wgreen);
   text-align: center;
+
 }
 
 .recipe_show img {
@@ -27,3 +29,10 @@
   text-align: right;
   margin-right: 2rem;
 }
+
+.show-icon {
+  color: var(--wblue);
+  font-size: 1.5em;
+}
+
+

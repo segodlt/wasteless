@@ -39,18 +39,19 @@
     <div id="measures_list">
       <div>
         <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
-          <i class="fas fa-cart-arrow-down"></i>
+          <i class="fas fa-cart-arrow-down show-icon "></i>
         <% end %>
       </div>
+      &nbsp &nbsp
       <div>
-        <p> <%= measure.quantity %> <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
+        <p> <%= measure.quantity %>  <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
       </div>
     </div>
   <% end %>
 
   <p id="description"><%= @recipe.description %></p>
 
-  <em><%= "#{@recipe.reviews.count} utilisateurs ont déjà donné leurs avis!" %></em>
+  <em><%= "#{@recipe.reviews.count} avis" %></em><br>
   <% if user_signed_in? %>
     <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
   <% end %>
@@ -77,7 +78,6 @@
   </div>
 
   <!-- Formulaire d'ajout de review -->
-  <br>
   <% if user_signed_in? && @recipe.user != current_user %>
     <div id="review-form">
     	<%= simple_form_for [ @recipe, @review ] do |f| %>
@@ -86,18 +86,21 @@
     		<% end %>
     	  <%= f.input :rating %>
     	  <%= f.input :content %>
-    	  <%= f.submit "Valider votre avis" %>
+    	  <%= f.submit "Publier" %>
     	<% end %>
     </div>
   <% end %>
-  <br>
 
 
   <% if policy(@recipe).edit? %>
-  	<%= link_to "Modifier #{@recipe.title}", edit_recipe_path(@recipe) %> |
+  	<%= link_to edit_recipe_path(@recipe) do %>
+      <i class="fas fa-edit show-icon"></i>
+    <% end %>
   <% end %>
   <% if policy(@recipe).destroy? %>
-    <%= link_to "Effacer #{@recipe.title}", recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } %> |
+    <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
+      <i class="fas fa-trash-alt show-icon"></i>
+    <% end %>
   <% end %>
   <%#= link_to "Mes favoris", favorites_path %>
   <%= link_to "Retour", "javascript:history.back()" %>
