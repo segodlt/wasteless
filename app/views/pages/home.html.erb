@@ -9,7 +9,7 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Recherchez une recette"
+            placeholder: "Trouvez votre recette !"
           %>
         </div>
       <% end %>
@@ -19,7 +19,7 @@
 
 <ul class="filter" style="list-style-type: none;">
   <% @categories.each do |category| %>
-    <li><%= link_to category.name, root_path(category_id:category.id), class: "btn-flat" %></li>
+    <li><%= link_to category.name, root_path(category_id:category.id), class: "btn-flat #{"active" if params[:category_id] == category.id.to_s}" %></li>
   <% end %>
 </ul>
 
@@ -27,7 +27,7 @@
   <% if params[:query].present? %>
     <%= "#{@recipes.count} résultat(s)" %>
   <% else %>
-    <p>Les recettes les plus récentes</p>
+    <p>Nos dernières recettes</p>
   <% end %>
 </div>
 
@@ -62,7 +62,7 @@
               </div>
             </div>
             <div class = "bot">
-              <%= link_to recipe_path(recipe) do %>
+              <%= link_to recipe_path(recipe), class:"next-page" do %>
                 <h2><%= recipe.title %></h2>
                <% end %>
             </div>
