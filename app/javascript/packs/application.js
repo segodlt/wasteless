@@ -29,6 +29,7 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { displayUnit, nextIngredient } from "../components/display_unit"
+import { redirectToRecipe } from "../components/redirect_to_recipe"
 import { initSelect2 } from "../plugins/init_select2"
 
 document.addEventListener('turbolinks:load', () => {
@@ -41,6 +42,7 @@ document.addEventListener('turbolinks:load', () => {
   $(".ingredient-choice").change(function(){
     $(this).toggleClass("active");
   });
+  redirectToRecipe();
   // Call your functions here, e.g:
   // initSelect2();
 });

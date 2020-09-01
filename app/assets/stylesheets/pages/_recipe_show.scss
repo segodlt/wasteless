@@ -1,8 +1,17 @@
+.recipe_show {
+  margin: 0px;
+  padding: 0px;
+  margin-bottom: 20px;
+  background-color: #F4F4F4;
+}
+
 .recipe_show h2 {
   font-family: 'Amatic SC', cursive;
-  font-size: 3em;
+  font-size: 2.5em;
   color: var(--wgreen);
   text-align: center;
+  border-bottom: solid 1px powderblue;
+  padding-bottom: 20px;
 
 }
 
@@ -10,29 +19,107 @@
   height: 50%;
   width: 100%;
   display: block;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 15px;
+
 }
 
 #measures_list {
-  margin-top: 2rem;
   display: flex;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 #description {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
-#favorite_icon {
-  display: block;
-  text-align: right;
-  margin-right: 2rem;
+.favorite_icon {
+  font-size: 1.7em;
+  background-color: #F4F4F4;
+  border-radius: 50%;
+  margin-top: -30px;
+  margin-left: 40%;
+  padding-top: 10px;
+  position: relative;
+  width: 70px;
+  height: 70px;
+  text-align: center;
 }
 
 .show-icon {
-  color: var(--wblue);
+  color: white;
   font-size: 1.5em;
+}
+
+.blue-icon {
+  color: var(--blue);
+  font-size: 1.5em;
+}
+
+
+.recipe-titles {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Amatic SC';
+  font-size: 1.5em;
+  margin: 0px;
+  }
+
+.fa-arrow-left {
+  margin: 15px;
+  padding-bottom: 20px;
+  z-index: 2;
+
+}
+
+.recipe-icons-block {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  position: relative;
+  margin-bottom: -60px;
+  z-index: 2;
+  padding-left: 20px;
+  padding-right:20px;
+}
+
+.recipe-body {
+  min-width: 100%;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: solid 1px white;
+  box-shadow: 0px 0px 6px lightgray;
+  border-radius: 20px;
+
+}
+
+.fa-info-circle {
+  color: lightgray;
+  margin-left: 10px;
+  font-size: 1.5em;
+}
+
+.username {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 0.8rem;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.star-review {
+  color: lightgray;
+}
+
+.review-para {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+
 }
 
 

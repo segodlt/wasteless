@@ -1,0 +1,58 @@
+.main-box {
+	display:flex;
+	flex-direction: column;
+	height: calc(100vh - 86px - 67px);
+	font-family: 'Open Sans', sans-serif;
+}
+
+.message-container {
+	flex: 0 0 170px;
+	background-color: white;
+}
+
+
+.grocery-items {
+	margin-bottom: 11px;
+	padding: 4px 4px;
+	display: flex;
+	font-size: 14px;
+	justify-content: space-between;
+	border-bottom: 2px dotted rgba(197, 197, 197, 0.800);
+}
+
+.content-wrapper.groceries-index {
+	background-color:rgba(197, 197, 197, 1.000);
+}	.white-box {
+  height: 562px;
+  background-color: white;
+  border-radius: 18px 18px 0px 0px;
+  padding: 20px;
+  overflow: hidden;
+	overflow-y: auto;
+	flex-grow: 1;
+} .message {
+	border-radius: 5px 5px;
+	background-color: rgba(197, 197, 197, 0.250);
+	padding: 5px 0px 5px 0px;
+	margin: 0px 15px 0px 15px;
+	opacity: 90%;
+	margin-top: 15px;
+	text-align: center !important;
+} .message p {
+	font-size: 12px;
+} .fas.fa-cart-arrow-down.show-icon.grocery {
+	color: var(--wblue);
+	font-size: 25px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 2rem;
+  font-family: 'Amatic SC', cursive;
+  font-style: bold;
+  color: white;
+} h3 {
+	font-style: bold;
+	font-size: 14px;
+};
+
