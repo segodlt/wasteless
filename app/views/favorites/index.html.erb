@@ -1,44 +1,54 @@
-<h4>Mes favoris</h4>
-
-<div class="container">
-  <div id="recipes">
-    <% if @favorites.empty? %>
-      <p>Ajoutez vos recettes préférées en favoris en cliquant sur <i class="fas fa-heart"></i> !</p>
-    <% else %>
-      <ul style="list-style-type: none;">
-        <% @favorites.each do |favorite| %>
-
-          <li>
-            <div class="card-recipe">
-              <div id="favorite_icon">
-                <% if current_user %>
-                  <% if @favorite %>
-                    <%= link_to favorite_path(@favorite), method: :delete do %>
-                      <i class="fas fa-heart"></i>
-                    <% end %>
-                  <% else %>
-                    <%= link_to favorites_path(recipe:@recipe), method: :post do %>
-                      <i class="far fa-heart"></i>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              </div>
-              <%= cl_image_tag(favorite.recipe.photos.first.key, width: 250, crop: :fill) if favorite.recipe.photos.attached? %>
-                <div class="card-body">
-                  <h5 class="card-title"><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></h5>
-                  <p class="card-text">
-                    <% if favorite.recipe.average_rating > 0 %>
-                      <p><%= "★" * favorite.recipe.average_rating %><%= "☆" * (5 - favorite.recipe.average_rating) %><%= " (#{favorite.recipe.reviews.count} avis)" %></p>
-                    <% else %>
-                      <%= "" %>
-                    <% end %></p>
-                </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+<div class="title title-flexbox title-bottom">
+  <%= link_to "javascript:history.back()" do %>
+    <i class="fas fa-arrow-left blue-icon title-arrow"></i>
+  <% end %>
+  <h2>Mes favoris</h2>
 </div>
 
-<%= link_to "Retour", root_path %>
+<% if @favorites.empty? %>
+  <div class="fav-message">
+    <p>Ajoutez vos recettes préférées en favoris en cliquant sur <i class="fas fa-heart icon fav-heart"></i> !</p>
+  </div>
+<% else %>
+  <div class="container">
+    <div id="recipes">
+      <div class="list-container">
+        <% @favorites.each do |favorite| %>
+          <div class = "recipe-card">
+            <div class = "top">
+              <div class="card-category" style='background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("<%= cl_image_path(favorite.recipe.photos.first.key, crop: :fill) if favorite.recipe.photos.attached? %>")'>
+                <div class = "favorites">
+                  <div id="favorite-icon">
+                    <% if current_user %>
+                       <% if favorite.recipe.favorites.any? %>
+                         <%= link_to favorite_path(favorite.recipe.favorites.first), method: :delete do %>
+                          <i class="fas fa-heart icon"></i>
+                         <% end %>
+                      <% else %>
+                        <%= link_to favorites_path(recipe: favorite.recipe), method: :post do %>
+                          <i class="far fa-heart icon"></i>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                  <div class="card-rating">
+                    <% if favorite.recipe.average_rating > 0 %>
+                      <p class = "rating"><%= "★" * favorite.recipe.average_rating %><%= "☆" * (5 - favorite.recipe.average_rating) %> <%= " (#{favorite.recipe.reviews.count} avis)" %></p>
+                    <% else %>
+                      <%= "" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class = "bot">
+                <%= link_to recipe_path(favorite.recipe) do %>
+                  <h2><%= favorite.recipe.title %></h2>
+                 <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
