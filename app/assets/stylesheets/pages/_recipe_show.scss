@@ -28,12 +28,12 @@
 #measures_list {
   display: flex;
   font-family: 'Open Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
 }
 
 #description {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .favorite_icon {
@@ -103,3 +103,23 @@
   margin-left: 10px;
   font-size: 1.5em;
 }
+
+.username {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  font-size: 0.8rem;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+.star-review {
+  color: lightgray;
+}
+
+.review-para {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.9rem;
+
+}
+
+
