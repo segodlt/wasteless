@@ -1,19 +1,22 @@
 <h1>Liste de courses</h1>
 
 <div class="white-box">
-	<% if @groceries.empty? %>
+
+	<% @groceries.each do |grocery| %>
+	  <div class="grocery-items <%= 'last' if grocery == @groceries.last %>">
+	  		<div>
+	      	<%= grocery.measure.quantity %> <%= grocery.measure.ingredient.unit %> - <%= grocery.measure.ingredient.name %>
+	  		</div>
+	      <%= link_to grocery_path(grocery), method: :delete do  %>
+	        <i class="far fa-trash-alt"></i>
+	      <% end %>
+	    </div>
+	<% end %>
+
+	<div class="message">
 		<h3>Il vous manque un ingrédient ?</h3>
 		<p>Ajoutez le à partir d'une recette et retrouvez tous vos ingrédients dans votre liste de course !</p>
-	<% else %>
-		<% @groceries.each do |grocery| %>
-		  <p>
-		      <%= grocery.measure.quantity %> <%= grocery.measure.ingredient.unit %> - <%= grocery.measure.ingredient.name %>
-		      <%= link_to grocery_path(grocery), method: :delete do  %>
-		        <i class="far fa-trash-alt"></i>
-		      <% end %>
-		    </p>
-		    <p></p>
-		<% end %>
-	<% end %>
+		<i class="fas fa-cart-arrow-down show-icon grocery"></i>
+	</div>
 </div>
 
