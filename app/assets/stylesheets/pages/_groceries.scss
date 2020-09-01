@@ -1,13 +1,23 @@
+.main-box {
+	display:flex;
+	flex-direction: column;
+	height: calc(100vh - 86px - 76px);
+	font-family: 'Open Sans', sans-serif;
+}
+
+.message-container {
+	flex: 0 0 170px;
+	background-color: white;
+}
+
 
 .grocery-items {
 	margin-bottom: 11px;
 	padding: 4px 4px;
 	display: flex;
+	font-size: 14px;
 	justify-content: space-between;
 	border-bottom: 2px dotted rgba(197, 197, 197, 0.800);
-	&.last {
-		margin-bottom: 40px !important;
-	}
 }
 
 .content-wrapper.groceries-index {
@@ -17,13 +27,16 @@
   background-color: white;
   border-radius: 18px 18px 0px 0px;
   padding: 20px;
+  overflow: hidden;
+	overflow-y: auto;
+	flex-grow: 1;
 } .message {
-	margin-top: 90px;
 	border-radius: 5px 5px;
-	background-color: rgba(197, 197, 197, 0.300);
+	background-color: rgba(197, 197, 197, 0.250);
 	padding: 5px 0px 5px 0px;
 	margin: 0px 15px 0px 15px;
 	opacity: 90%;
+	margin-top: 15px;
 	text-align: center !important;
 } .message p {
 	font-size: 12px;
@@ -41,7 +54,5 @@ h1 {
 } h3 {
 	font-style: bold;
 	font-size: 14px;
-} p {
-	font-size: 15px;
-}
+};
 
