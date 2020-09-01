@@ -17,11 +17,13 @@
 
 .recipe_show img {
   min-height: 50%;
+  height: 250px;
   width: 100%;
   display: block;
   margin: 0px;
   padding: 0px;
   border-radius: 15px;
+  object-fit: cover;
 
 }
 
