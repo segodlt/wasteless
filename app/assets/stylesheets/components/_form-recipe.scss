@@ -32,17 +32,16 @@
   }
 }
 
-.recipe-form-top:focus {
-  border-bottom: solid var(--wgreen);
-  padding-bottom: 2rem;
-}
+// .recipe-form-top:focus {
+//   border-bottom: solid var(--wgreen);
+//   padding-bottom: 2rem;
+// }
 
 .ingredient-form {
   border-bottom: 1px solid var(--wlightgr);
 }
 .new-ingredient.active{
-  background-color: var(--wlightgr);
-  opacity: 0.8;
+  padding-bottom: 2rem;
 }
 
 .quantity-form {
@@ -54,9 +53,25 @@
   margin-left: 2.75rem;
 }
 
-.btn {
+.btn-blue {
   width: 100%;
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: bold;
+  text-align: center;
 }
 
+.form-actions {
+  text-align: center;
+}
 
+.recipe_measures_quantity {
+  width: 5rem;
+}
+
+#add-ingredient-to-recipe {
+  background: yellow;
+  text-align: center;
+  padding: 15px;
+  border-radius: 4px;
+}
