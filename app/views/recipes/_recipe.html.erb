@@ -26,17 +26,19 @@
       <% if params[:action] == 'new' %>
         <div id="base_ingredient" class="d-none ingredient-choice new-ingredient">
           <%= f.simple_fields_for :measures do |m| %>
-            <div class="form-inputs">
-              <%= m.input :ingredient_id, label: "Ingrédient",collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
-              <%= m.input :quantity, label:"Quantité" %>
-            </div>
-            <span class="display-unit"></span>
+            <div class="ingredient-form">
+              <div class="form-inputs">
+                <%= m.input :ingredient_id, label: "Ingrédient",collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
+                <%= m.input :quantity, label:"Quantité" %>
+              </div>
+              <span class="display-unit"></span>
 
-            <%= m.input :required, label: "Facultatif" %>
+              <%= m.input :required, label: "Facultatif" %>
+            </div>
           <% end %>
         </div>
       <% end %>
-      <div id="first_ingredient">
+      <div id="first_ingredient" class="ingredient-choice new-ingredient">
         <%= f.simple_fields_for :measures do |m| %>
           <div class="ingredient-form">
             <div class="form-inputs">
