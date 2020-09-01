@@ -38,9 +38,6 @@ document.addEventListener('turbolinks:load', () => {
   $(".category-choice").click(function(){
     $(this).toggleClass("active");
   });
-  $(".ingredient-choice").change(function(){
-    $(this).toggleClass("active");
-  });
   // Call your functions here, e.g:
   // initSelect2();
 });

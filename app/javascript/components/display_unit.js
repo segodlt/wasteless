@@ -54,7 +54,10 @@ const touchNextIngredient = (event) => {
       activeForm.classList.remove('active');
       activeForm.classList.remove('new-ingredient');
     }
-    document.querySelector('.new-ingredient').classList.add('active');
+
+    const lastNewIngredient = [].slice.call(document.querySelectorAll('.ingredient-choice.new-ingredient'), -1)[0]
+    lastNewIngredient.classList.add('active');
+    console.log(lastNewIngredient);
   } else {
     let newMeasure = document.querySelector('.new-measure-form').innerHTML;
     const measureForm = document.querySelector('.measure-form');
