@@ -18,6 +18,9 @@
           <div class="row">
             <div class="col-12">
               <div class="dropdown" id="avatar-home">
+                <%= link_to "javascript:history.back()" do %>
+                  <i class="fas fa-arrow-left blue-icon"></i>
+                <% end %>
                 <% if user_signed_in? %>
                     <%= cl_image_tag current_user.photo.key, width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} if current_user.photo.attached? %>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
