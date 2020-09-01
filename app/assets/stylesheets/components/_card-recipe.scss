@@ -59,7 +59,7 @@ float: inline-end;
 
 .card-category {
   min-height: 200px;
-  height: auto;
+  height: 250px;
   width: 100%;
   background-size: cover;
   border-radius: 10px;
@@ -75,4 +75,5 @@ float: inline-end;
   color: white;
   padding: 10px;
   padding-top: 60%;
+  margin: 0;
 }
