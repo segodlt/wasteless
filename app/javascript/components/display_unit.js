@@ -11,14 +11,12 @@ const displayUnit = (parent) => {
 
 const handleUnitForUdatedIngredient = (event) => {
   const field = event.target;
-  console.log(field)
   fetch("/api/ingredients")
     .then(response => response.json())
     .then((data) => {
       data.forEach((ingr) => {
         if(ingr["id"] === parseInt(field.value)) {
-          field.parentNode.nextElementSibling.nextElementSibling.innerText = ingr["unit"]
-          // field.parentNode.parentNode.querySelector(".display-unit").innerText = ingr["unit"]
+          field.closest(".ingredient-form").querySelector(".display-unit").innerText = ingr["unit"]
         };
       });
     });
@@ -51,10 +49,23 @@ const touchNextIngredient = (event) => {
     newNode.querySelector(".display-unit").innerText = '';
     newNode.classList.remove('d-none');
     initSelect2(`#recipe_measures_attributes_${measureIndex}_ingredient_id`);
+    const activeForm = document.querySelector('.ingredient-choice.active')
+    if (activeForm) {
+      activeForm.classList.remove('active');
+      activeForm.classList.remove('new-ingredient');
+    }
+    document.querySelector('.new-ingredient').classList.add('active');
   } else {
     let newMeasure = document.querySelector('.new-measure-form').innerHTML;
     const measureForm = document.querySelector('.measure-form');
+    const activeForm = document.querySelector('.new-measure-form-content.active')
+    if (activeForm) {
+      activeForm.classList.remove('active');
+      activeForm.classList.remove('new-ingredient');
+    }
     measureForm.insertAdjacentHTML('beforeend', newMeasure);
+    document.querySelector('.new-ingredient').classList.add('active');
+    [].slice.call(measureForm.querySelectorAll('.ingredient_input'), -1)[0].addEventListener("change", handleUnitForUdatedIngredient);
     document.querySelector('#new_measure_id').name = `new_measure_id_${measureIndex}`;
     document.querySelector('#new_measure_id').id = `new_measure_id_${measureIndex}`;
     document.querySelector('#new_measure_quantity').name = `new_measure_quantity_${measureIndex}`;
