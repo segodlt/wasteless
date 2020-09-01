@@ -19,13 +19,15 @@
 
 <ul class="filter" style="list-style-type: none;">
   <% @categories.each do |category| %>
-    <li><%= link_to category.name, root_path(category_id:category.id), class: "btn-flat #{"active" if params[:category_id] == category.id.to_s}" %></li>
+    <li><%= link_to category.name, root_path(category_id:category.id, query:params[:query]), class: "btn-flat #{"active" if params[:category_id] == category.id.to_s}" %></li>
   <% end %>
 </ul>
 
 <div class="results">
   <% if params[:query].present? %>
-    <%= "#{@recipes.count} résultat(s)" %>
+    <p><%= pluralize(@recipes.count,"résultat") %></p>
+  <% elsif params[:category_id].present? %>
+    <p>Nos recettes <%= @category.name.downcase %> </p>  
   <% else %>
     <p>Nos dernières recettes</p>
   <% end %>
