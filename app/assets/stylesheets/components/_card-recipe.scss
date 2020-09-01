@@ -23,7 +23,7 @@ a {
 #favorite-icon a {
   display: block;
   float: right;
-  padding: 5px;
+  padding: 15px;
 }
 
 .icon {
@@ -35,19 +35,32 @@ a {
 
 .card-rating {
   display: block;
-float: inline-end;
+  float: inline-end;
+}
+
+.rating {
+  color: white;
+  padding-left: 20px;
+  padding-top: 60%;
+  margin: 0;
 }
 
 
 .recipe-card {
-  margin-bottom: 5px;
+  background-color: white;
+  margin-bottom: 15px;
   display: flex;
   flex-direction: column;
   width: 100%;
+  border-right: solid 1px powderblue;
+  border-bottom: solid 1px powderblue;
+  border-left: solid 1px powderblue;
+  border-radius: 5px;
+  box-shadow: 0px 0px 6px lightgray;
 }
 
 .recipe-card h2 {
-  font-size: 2em;
+  font-size: 1.7em;
   font-weight: bold;
   text-decoration: none;
   color: var(--wgreen);
@@ -55,6 +68,7 @@ float: inline-end;
     a {
         text-decoration: none;
       }
+
 }
 
 .card-category {
@@ -67,13 +81,8 @@ float: inline-end;
 
 
 .bot {
-  padding : 10px;
+  padding: 10px;
 }// Specific CSS for your home-page
 
 
-.rating {
-  color: white;
-  padding: 10px;
-  padding-top: 60%;
-  margin: 0;
-}
+
