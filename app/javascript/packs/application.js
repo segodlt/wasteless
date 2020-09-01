@@ -29,12 +29,14 @@ import "bootstrap";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { displayUnit, nextIngredient } from "../components/display_unit"
+import { redirectToRecipe } from "../components/redirect_to_recipe"
 import { initSelect2 } from "../plugins/init_select2"
 
 document.addEventListener('turbolinks:load', () => {
   displayUnit();
   nextIngredient();
   initSelect2(".select2");
+  redirectToRecipe();
   // Call your functions here, e.g:
   // initSelect2();
 });
