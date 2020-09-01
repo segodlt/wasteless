@@ -35,6 +35,12 @@ document.addEventListener('turbolinks:load', () => {
   displayUnit();
   nextIngredient();
   initSelect2(".select2");
+  $(".category-choice").click(function(){
+    $(this).toggleClass("active");
+  });
+  $(".ingredient-choice").change(function(){
+    $(this).toggleClass("active");
+  });
   // Call your functions here, e.g:
   // initSelect2();
 });

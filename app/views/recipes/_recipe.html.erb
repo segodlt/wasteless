@@ -1,46 +1,82 @@
 <div class="recipe-form">
   <div id='action' data-action='<%= params[:controller] %>_<%= params[:action] %>'></div>
   <%= simple_form_for(@recipe) do |f| %>
-  	<%= f.association :category, as: :radio_buttons %>
-    <%= f.label :title, "Titre" %>
-    <%= f.text_field :title %>
-    <%= f.label :description, "Description" %>
-    <%= f.text_field :description %>
+  	<div class="form-inputs recipe-form-top">
+      <%#= f.association :category, as: :check_boxes, class: "control-label check_boxes optional" %>
+      <div class="form-group">
+        <label class="control-label check_boxes optional">Catégories</label>
+        <input type="hidden" name="recipe[category_ids][]" value="">
+        <div class="category-choices">
+          <% Category.all.each do |category| %>
+            <input type="checkbox" class="hidden" value="<%= category.id %>" name="recipe[category_ids][]" id="recipe_category_ids_<%= category.id %>">
+            <label for="recipe_category_ids_<%= category.id %>" class="category-choice">
+              <%= category.name %>
+              <!-- <i class="fa fa-check"></i> -->
+            </label>
+          <% end %>
+         </div>
+      </div>
+      <%= f.label :title, "Titre" %>
+      <%= f.text_field :title, class: "form-control" %>
+      <%= f.label :description, "Description" %>
+      <%= f.text_area :description, class: "form-control" %>
+    </div>
     <div class='measure-form'>
-      <p>Ingrédients</p>
+     <!-- <p>Ingrédients</p> -->
       <% if params[:action] == 'new' %>
-        <div id="base_ingredient" class="d-none">
+        <div id="base_ingredient" class="d-none ingredient-choice new-ingredient">
           <%= f.simple_fields_for :measures do |m| %>
-            <%= m.input :ingredient_id, collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
-            <%= m.input :quantity %>
+            <div class="form-inputs">
+              <%= m.input :ingredient_id, label: "Ingrédient",collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
+              <%= m.input :quantity, label:"Quantité" %>
+            </div>
             <span class="display-unit"></span>
 
-            <%= m.input :required %>
+            <%= m.input :required, label: "Facultatif" %>
           <% end %>
         </div>
       <% end %>
       <div id="first_ingredient">
         <%= f.simple_fields_for :measures do |m| %>
-          <%= m.input :ingredient_id, collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
-          <%= m.input :quantity %>
-          <% if params[:action] == "edit" %>
-            <span class="display-unit"><%= m.object.ingredient.unit %></span>
-          <% end %>
-          <%= m.input :required %>
+          <div class="ingredient-form">
+            <div class="form-inputs">
+              <%= m.input :ingredient_id, label: "Ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
+            </div>
+            <div class="quantity-form">
+              <%= m.input :quantity, label:"Quantité" %>
+              <span class="display-unit"><%= m.object.ingredient&.unit %></span>
+            </div>
+              <%= m.input :required, label: "Facultatif" %>
+          </div>
         <% end %>
       </div>
     </div>
-    <i class="fas fa-plus next-element"></i>
+      <div class="btn">
+        <i class="fas fa-plus next-element"> Ingrédient</i>
+      </div>
 
-    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-
-    <%= f.submit %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'btn-blue'}, class: "form-control-file" %>
+    <div class="form-actions">
+      <%= f.submit "Mettre à jour", class: "btn-blue" %>
+    </div>
   <% end %>
 
 
-  <div class="new-measure-form d-none">
-    <%= select_tag :new_measure_id, options_from_collection_for_select(Ingredient.all, "id", "name"), class: 'ingredient_input' %>
-    <%= number_field_tag(:new_measure_quantity, value = nil, options = {}) %>
-    <%= check_box_tag(:new_measure_required, value = '1', checked = false, options = {}) %>
+  <div class="new-measure-form d-none form-inputs">
+    <div class="new-measure-form-content ingredient-form new-ingredient">
+      <div class="form-group">
+        <label for="new_measure_id_2">Ingrédient</label>
+        <%= select_tag :new_measure_id, options_from_collection_for_select(Ingredient.all, "id", "name"), class: 'ingredient_input' %>
+      </div>
+      <div class="form-group">
+        <label for="">Quantité</label>
+        <%= number_field_tag(:new_measure_quantity, value = nil, options = {}) %>
+      </div>
+      <span class="display-unit">ml</span>
+      <div class="form-group">
+        <label for="">Facultatif</label>
+        <%= check_box_tag(:new_measure_required, value = '1', checked = false, options = {}) %>
+      </div>
+    </div>
   </div>
 </div>
