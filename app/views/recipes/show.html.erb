@@ -72,8 +72,8 @@
     <p id="description"><%= @recipe.description %></p>
 
     <em><%= "#{@recipe.reviews.count} avis" %></em><br>
-    <% if user_signed_in? %>
-      <%= link_to "Donner votre avis", recipe_path(@recipe, anchor:"review-form") %>
+    <% if user_signed_in? && @recipe.user != current_user %>
+      <%= link_to "Donnez votre avis", recipe_path(@recipe, anchor:"review-form") %>
     <% end %>
 
     <div>
