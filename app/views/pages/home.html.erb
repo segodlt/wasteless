@@ -19,7 +19,7 @@
 
 <ul class="filter" style="list-style-type: none;">
   <% @categories.each do |category| %>
-    <li><%= link_to category.name, root_path(category_id:category.id), class: "btn-flat" %></li>
+    <li><%= link_to category.name, root_path(category_id:category.id), class: "btn-flat #{"active" if params[:category_id] == category.id.to_s}" %></li>
   <% end %>
 </ul>
 
