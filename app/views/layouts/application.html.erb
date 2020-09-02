@@ -21,6 +21,7 @@
                 <%= link_to "javascript:history.back()" do %>
                   <i class="fas fa-arrow-left blue-icon"></i>
                 <% end %>
+                <%= image_tag "logo-wasteless.png", alt: "logo", class:"logo-wasteless" %>
                 <% if user_signed_in? %>
                     <%= cl_image_tag current_user.photo.key, width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} if current_user.photo.attached? %>
                     <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
@@ -30,7 +31,7 @@
                       <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item white-menu"%>
                     </div>
                 <% else %>
-                  <%= cl_image_tag "ksklzyapqn0zcabbqsmm", width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+                  <%= cl_image_tag "https://res.cloudinary.com/dhf497t6o/image/upload/v1599036991/avatar-gris_jdsrdo.png", width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
                   <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
                     <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item white-menu"%>
                   </div>
