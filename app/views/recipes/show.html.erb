@@ -1,16 +1,18 @@
 <div class="recipe_show">
-  <div class="recipe-icons-block">
-    <% if policy(@recipe).edit? %>
-      <%= link_to edit_recipe_path(@recipe) do %>
-      <i class="fas fa-edit show-icon"></i>
+  <% if policy(@recipe).edit? %>
+    <div class="recipe-icons-block">
+      <% if policy(@recipe).edit? %>
+        <%= link_to edit_recipe_path(@recipe) do %>
+        <i class="fas fa-edit show-icon"></i>
+        <% end %>
       <% end %>
-    <% end %>
-    <% if policy(@recipe).destroy? %>
-      <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
-        <i class="fas fa-trash-alt show-icon"></i>
+      <% if policy(@recipe).destroy? %>
+        <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
+          <i class="fas fa-trash-alt show-icon"></i>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 
   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
