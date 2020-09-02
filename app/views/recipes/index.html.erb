@@ -4,7 +4,13 @@
   <h2>Mes recettes</h2>
 </div>
 
-<div class="container">
+
+<% if @recipes.empty? %>
+  <div class="fav-message">
+    <p>Ajoutez vos recettes et retrouvez les toutes par ici !</p>
+  </div>
+<% else %>
+  <div class="container">
   <div id="recipes">
     <div class="list-container">
       <% @recipes.each do |recipe| %>
@@ -45,3 +51,4 @@
       </div>
     </div>
   </div>
+<% end %>
