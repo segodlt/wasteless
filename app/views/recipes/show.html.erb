@@ -59,11 +59,6 @@
     <% modal_id = 1 %>
     <% @recipe.measures.each do |measure| %>
       <div id="measures_list">
-        <div>
-          <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
-            <i class="fas fa-cart-arrow-down blue-icon "></i>
-          <% end %>
-        </div>
         &nbsp &nbsp
         <div>
           <p> <%= measure.quantity %>  <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
@@ -93,6 +88,12 @@
           <!----->
           <% modal_id += 1 %>
         <% end %>
+        &nbsp &nbsp
+        <div>
+          <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post, data: { confirm: "Voulez-vous ajouter cet ingrédient à votre liste de course?"} do %>
+            <i class="fas fa-cart-arrow-down blue-icon "></i>
+          <% end %>
+        </div>
       </div>
     <% end %>
 
@@ -111,17 +112,20 @@
           <% @recipe.reviews.each do |review| %>
             <div class="review">
               <p class="username"> <%= review.user.username %></p>
-              <li><%= review.rating.to_i %>/5 <i class="fas fa-star star-review"></i> &nbsp <span class="review-para"><%= review.content %></span>&nbsp
+              <li>
                 <div class="icon-reviews">
-                	<% if policy(review).edit? %>
-            		  	<%= link_to edit_review_path(review, anchor:"review-form") do %>
+                  <% if policy(review).edit? %>
+                    <%= link_to edit_review_path(review, anchor:"review-form") do %>
                       <i class="fas fa-pen rev-i"></i>
                     <% end %>
-            		  <% end %>
+                  <% end %>
                   <%= link_to review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
                     <i class="far fa-trash-alt rev-i"></i>
                   <% end %>
                 </div>
+                &nbsp
+                <%= review.rating.to_i %>/5 <i class="fas fa-star star-review"></i> &nbsp <span class="review-para"><%= review.content %></span>&nbsp
+
               </li>
             </div>
           <% end %>

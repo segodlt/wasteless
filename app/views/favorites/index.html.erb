@@ -4,7 +4,7 @@
 
 <% if @favorites.empty? %>
   <div class="fav-message">
-    <p>Ajoutez vos recettes préférées en favoris en cliquant sur <i class="fas fa-heart icon fav-heart"></i> !</p>
+    <p>Ajoutez vos recettes préférées en favoris <br> en cliquant sur <i class="fas fa-heart icon fav-heart"></i> !</p>
   </div>
 <% else %>
   <div class="container">
@@ -38,7 +38,7 @@
                 </div>
               </div>
               <div class = "bot">
-                <%= link_to recipe_path(favorite.recipe) do %>
+                <%= link_to recipe_path(favorite.recipe), class:"next-page" do %>
                   <h2><%= favorite.recipe.title %></h2>
                  <% end %>
                 </div>
