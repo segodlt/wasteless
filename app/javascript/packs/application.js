@@ -31,15 +31,18 @@ import "bootstrap";
 import { displayUnit, nextIngredient } from "../components/display_unit"
 import { redirectToRecipe } from "../components/redirect_to_recipe"
 import { initSelect2 } from "../plugins/init_select2"
+import { categoryForm } from "../components/category_form"
 
 document.addEventListener('turbolinks:load', () => {
   displayUnit();
   nextIngredient();
   initSelect2(".select2");
-  $(".category-choice").click(function(){
-    $(this).toggleClass("active");
-  });
   redirectToRecipe();
+  categoryForm();
+  // $(".category-choice").click(function(){
+
+  //   $(this).toggleClass("active");
+  // });
   // Call your functions here, e.g:
   // initSelect2();
 });

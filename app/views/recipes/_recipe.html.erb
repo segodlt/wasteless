@@ -4,14 +4,12 @@
   	<div class="form-inputs recipe-form-top">
       <%#= f.association :category, as: :check_boxes, class: "control-label check_boxes optional" %>
       <div class="form-group">
-        <label class="control-label check_boxes optional">Catégories</label>
-        <input type="hidden" name="recipe[category_ids][]" value="">
+        <label class="control-label radio_buttons optional">Catégories</label>
         <div class="category-choices">
           <% Category.all.each do |category| %>
-            <input type="checkbox" class="hidden" value="<%= category.id %>" name="recipe[category_ids][]" id="recipe_category_ids_<%= category.id %>">
-            <label for="recipe_category_ids_<%= category.id %>" class="category-choice">
+            <input type="radio" class="hidden" value="<%= category.id %>" name="recipe[category_id]" id="recipe_category_id_<%= category.id %>">
+            <label for="recipe_category_id_<%= category.id %>" class="category-choice">
               <%= category.name %>
-              <!-- <i class="fa fa-check"></i> -->
             </label>
           <% end %>
          </div>
@@ -29,23 +27,28 @@
             <div class="ingredient-form">
               <div class="form-inputs">
                 <%= m.input :ingredient_id, label: "Ingrédient",collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
-                <%= m.input :quantity, label:"Quantité" %>
               </div>
-              <span class="display-unit"></span>
+              <div class="quantity-form">
+                <input type="text" value="1" class="counter hidden"/>
+                <button type="button" class="increment-btn">+</button>
+                <%= m.input :quantity %>
+                <span class="display-unit"></span>
+              </div>
 
               <%= m.input :required, label: "Facultatif" %>
             </div>
           <% end %>
         </div>
       <% end %>
-      <div id="first_ingredient" class="ingredient-choice new-ingredient">
+      <ul id="recipe-ingredients-list"></ul>
+      <div id="first_ingredient" class="ingredient-choice new-ingredient" style="display: none;">
         <%= f.simple_fields_for :measures do |m| %>
           <div class="ingredient-form">
             <div class="form-inputs">
-              <%= m.input :ingredient_id, label: "Ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
+              <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
             </div>
             <div class="quantity-form">
-              <%= m.input :quantity, label:"Quantité" %>
+              <p> <%= m.input :quantity, label: "-" %><%= m.input :quantity %><%= m.input :quantity, label: "+" %> </p>
               <span class="display-unit"><%= m.object.ingredient&.unit %></span>
             </div>
               <%= m.input :required, label: "Facultatif" %>
@@ -53,17 +56,18 @@
         <% end %>
       </div>
     </div>
-      <div class="btn">
-        <i class="fas fa-plus next-element"> Ingrédient</i>
+      <div class="add-ingredients btn-blue">
+        <i class="fas fa-plus"></i>
+        Ingrédient
       </div>
 
     <%= f.input :photos, as: :file, input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'btn-blue'}, class: "form-control-file" %>
     <div class="form-actions">
-      <%= f.submit "Mettre à jour", class: "btn-blue" %>
+      <%= f.submit "Valider", class: "btn-blue" %>
     </div>
   <% end %>
 
-
+<!-- formulaire de modification de recette -->
   <div class="new-measure-form d-none form-inputs">
     <div class="new-measure-form-content ingredient-form new-ingredient">
       <div class="form-group">

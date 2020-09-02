@@ -23,7 +23,7 @@ const handleUnitForUdatedIngredient = (event) => {
 }
 
 const nextIngredient = () => {
-  const cross = document.querySelector(".next-element");
+  const cross = document.querySelector(".add-ingredients");
   if (cross) {
     cross.addEventListener("click", touchNextIngredient);
   }
@@ -58,6 +58,23 @@ const touchNextIngredient = (event) => {
     const lastNewIngredient = [].slice.call(document.querySelectorAll('.ingredient-choice.new-ingredient'), -1)[0]
     lastNewIngredient.classList.add('active');
     console.log(lastNewIngredient);
+    // Ajouter un bouton ADD ingredient
+    lastNewIngredient.insertAdjacentHTML('beforeend', `<div id="add-ingredient-to-recipe">Ajouter</div>`);
+    const addIngredientButton = document.getElementById("add-ingredient-to-recipe");
+    addIngredientButton.addEventListener('click', (event) => {
+      lastNewIngredient.style.display = "none";
+      addIngredientButton.remove();
+      const lastNewIngredientCopy = lastNewIngredient.cloneNode(true);
+      firstIngredient.parentNode.appendChild(lastNewIngredientCopy);
+      // Ajouter l'ingredient dans la recipe-ingredients-list
+
+      const list = document.getElementById('recipe-ingredients-list');
+      const ingredientHtml = `<li>${buildIngredientItem(lastNewIngredient)}</li>`;
+      list.insertAdjacentHTML("beforeend", ingredientHtml);
+    })
+
+
+
   } else {
     let newMeasure = document.querySelector('.new-measure-form').innerHTML;
     const measureForm = document.querySelector('.measure-form');
@@ -76,6 +93,19 @@ const touchNextIngredient = (event) => {
     document.querySelector('#new_measure_required').name = `new_measure_required_${measureIndex}`;
     document.querySelector('#new_measure_required').id = `new_measure_required_${measureIndex}`;
     initSelect2(`#new_measure_id_${measureIndex}`);
+  }
+
+  const buildIngredientItem = (lastNewIngredient) => {
+    const ingredientName = lastNewIngredient.querySelector('.select2-selection__rendered').innerText;
+    const ingredientQuantity = lastNewIngredient.querySelector('.recipe_measures_quantity input').value;
+    const ingredientUnit = lastNewIngredient.querySelector('.display-unit').innerText;
+    const facultative = lastNewIngredient.querySelector(".recipe_measures_required input[type='checkbox']");
+    if (facultative.checked) {
+      return `${ingredientName} (${ingredientQuantity} ${ingredientUnit}) - F`;
+    } else {
+      return `${ingredientName} (${ingredientQuantity} ${ingredientUnit})`;
+    }
+
   }
 }
 export {displayUnit, nextIngredient };

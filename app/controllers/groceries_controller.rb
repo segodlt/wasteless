@@ -1,8 +1,7 @@
 class GroceriesController < ApplicationController
-	def index
+  def index
     @groceries = policy_scope(Grocery).where(user_id:current_user.id)
   end
-
 
   def create
     @user = current_user
@@ -14,15 +13,15 @@ class GroceriesController < ApplicationController
   end
 
   def destroy
-  	@grocery = Grocery.find(params[:id])
+    @grocery = Grocery.find(params[:id])
     authorize @grocery
     @grocery.destroy
-  	redirect_to groceries_path, notice: "Vous avez supprimé #{@grocery.measure.ingredient.name} à votre liste de course."
+    redirect_to groceries_path, notice: "Vous avez supprimé #{@grocery.measure.ingredient.name} à votre liste de course."
   end
 
   private
+
   def grocery_params
     params.require(:grocery).permit(:measure_id, measures_attributes: [:id, :ingredient_id, :listed, :quantity, :required])
-
   end
 end
