@@ -9,14 +9,14 @@ class GroceriesController < ApplicationController
     @grocery.user = @user
     authorize @grocery
     @grocery.save
-    redirect_to recipe_path(@grocery.measure.recipe), notice: "Vous avez rajouté #{@grocery.measure.ingredient.name} à votre liste de course."
+    redirect_to recipe_path(@grocery.measure.recipe), notice: "Ingrédient ajouté à votre liste de course."
   end
 
   def destroy
     @grocery = Grocery.find(params[:id])
     authorize @grocery
     @grocery.destroy
-    redirect_to groceries_path, notice: "Vous avez supprimé #{@grocery.measure.ingredient.name} à votre liste de course."
+    redirect_to groceries_path, notice: "Ingrédient supprimé de votre liste de course."
   end
 
   private
