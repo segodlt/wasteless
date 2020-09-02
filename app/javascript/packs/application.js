@@ -35,6 +35,7 @@ import { categoryForm } from "../components/category_form"
 import { closeNotice } from "../components/close_notice"
 //import { incrementQuantity } from "../components/increment_quantity"
 
+
 // import { initSweetalert } from '../components/init_select2';
 import { initSweetalert } from '../plugins/init_sweetalert';
 
@@ -64,5 +65,4 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
-
 
