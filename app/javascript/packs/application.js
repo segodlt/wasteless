@@ -54,7 +54,7 @@ import { initSweetalert } from '../plugins/init_sweetalert';
 
 initSweetalert('#sweet-alert-demo', {
   title: "Êtes-vous sûr(e) ?",
-  text: "Cette action est irréversible",
+  text: "",
   icon: "warning"
 }, (value) => {
   if (value) {
