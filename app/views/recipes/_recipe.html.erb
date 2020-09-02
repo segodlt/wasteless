@@ -26,16 +26,17 @@
           <%= f.simple_fields_for :measures do |m| %>
             <div class="ingredient-form">
               <div class="form-inputs">
-                <%= m.input :ingredient_id, label: "Ingrédient",collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
+                <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
               </div>
               <div class="quantity-form">
-                <input type="text" value="1" class="counter hidden"/>
-                <button type="button" class="increment-btn">+</button>
-                <%= m.input :quantity %>
+                <!-- <button type="button" value="-1" class="counter subtract-btn">-</button> -->
+                <%= m.input :quantity, label: "Quantité" %>
+                <!-- <button type="button" value="1" class="counter increment-btn">+</button> -->
                 <span class="display-unit"></span>
               </div>
-
-              <%= m.input :required, label: "Facultatif" %>
+              <div class="required">
+                <%= m.input :required, label: "Facultatif" %>
+              </div>
             </div>
           <% end %>
         </div>

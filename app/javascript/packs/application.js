@@ -32,6 +32,7 @@ import { displayUnit, nextIngredient } from "../components/display_unit"
 import { redirectToRecipe } from "../components/redirect_to_recipe"
 import { initSelect2 } from "../plugins/init_select2"
 import { categoryForm } from "../components/category_form"
+//import { incrementQuantity } from "../components/increment_quantity"
 
 document.addEventListener('turbolinks:load', () => {
   displayUnit();
@@ -39,6 +40,7 @@ document.addEventListener('turbolinks:load', () => {
   initSelect2(".select2");
   redirectToRecipe();
   categoryForm();
+  // incrementQuantity();
   // $(".category-choice").click(function(){
 
   //   $(this).toggleClass("active");
