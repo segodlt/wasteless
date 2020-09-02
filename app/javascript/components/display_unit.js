@@ -79,14 +79,14 @@ const touchNextIngredient = (event) => {
     const lastNewIngredient = [].slice.call(document.querySelectorAll('.ingredient-choice.new-ingredient'), -1)[0]
     lastNewIngredient.classList.add('active');
     console.log(lastNewIngredient);
+
     // Ajouter un bouton ADD ingredient
     lastNewIngredient.insertAdjacentHTML('beforeend', `<div id="button-add-ingredient"><div id="add-ingredient-to-recipe">Ajouter</div></div>`);
     const addIngredientButton = document.getElementById("add-ingredient-to-recipe");
     addIngredientButton.addEventListener('click', (event) => {
       lastNewIngredient.style.display = "none";
       addIngredientButton.remove();
-      const lastNewIngredientCopy = lastNewIngredient.cloneNode(true);
-      firstIngredient.parentNode.appendChild(lastNewIngredientCopy);
+
       // Ajouter l'ingredient dans la recipe-ingredients-list
 
       const list = document.getElementById('recipe-ingredients-list');
