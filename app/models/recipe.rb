@@ -8,6 +8,8 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :measures
   accepts_nested_attributes_for :measures
 
+  has_many :groceries, through: :measures
+
   validates :title, :description, presence: true
 
   def average_rating

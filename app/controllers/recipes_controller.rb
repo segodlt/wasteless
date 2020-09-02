@@ -71,6 +71,7 @@ class RecipesController < ApplicationController
   def destroy
     @recipe = Recipe.find(params[:id])
     authorize @recipe
+    @recipe.groceries.each { |grocery| grocery.destroy }
     @recipe.destroy
     redirect_to recipes_path
   end
