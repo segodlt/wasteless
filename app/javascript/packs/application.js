@@ -34,7 +34,22 @@ import { initSelect2 } from "../plugins/init_select2"
 import { categoryForm } from "../components/category_form"
 import { closeNotice } from "../components/close_notice"
 //import { incrementQuantity } from "../components/increment_quantity"
-// import { inputSpinner } from 'bootstrap-input-spinner'
+
+
+// import { initSweetalert } from '../components/init_select2';
+import { initSweetalert } from '../plugins/init_sweetalert';
+
+initSweetalert('#sweet-alert-demo', {
+  title: "Êtes-vous sûr(e) ?",
+  text: "",
+  icon: "warning"
+}, (value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+});
+
 document.addEventListener('turbolinks:load', () => {
   displayUnit();
   nextIngredient();
@@ -51,18 +66,3 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 });
 
-// import { initSweetalert } from '../components/init_select2';
-import { initSweetalert } from '../plugins/init_sweetalert';
-
-initSweetalert('#sweet-alert-demo', {
-  title: "Êtes-vous sûr(e) ?",
-  text: "",
-  icon: "warning"
-}, (value) => {
-  if (value) {
-    const link = document.querySelector('#delete-link');
-    link.click();
-  }
-});
-// console.log($("input[type='number']"))
-// $("input[type='number']").inputSpinner();
