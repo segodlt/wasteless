@@ -33,7 +33,7 @@ import { redirectToRecipe } from "../components/redirect_to_recipe"
 import { initSelect2 } from "../plugins/init_select2"
 import { categoryForm } from "../components/category_form"
 //import { incrementQuantity } from "../components/increment_quantity"
-
+// import { inputSpinner } from 'bootstrap-input-spinner'
 document.addEventListener('turbolinks:load', () => {
   displayUnit();
   nextIngredient();
@@ -62,3 +62,5 @@ initSweetalert('#sweet-alert-demo', {
     link.click();
   }
 });
+// console.log($("input[type='number']"))
+// $("input[type='number']").inputSpinner();
