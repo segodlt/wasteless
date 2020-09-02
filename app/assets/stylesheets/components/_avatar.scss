@@ -24,7 +24,6 @@
   width: 100%;
   text-align: right;
   padding-right: 10px;
-  padding-top: 5px;
   margin-bottom: 10px;
   margin-top: 5px;
 
@@ -39,10 +38,10 @@
 .dropdown {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .fa-arrow-left {
-  padding-top: 5px;
   z-index: 2;
   color: grey;
   font-size: 1.5em;
@@ -56,5 +55,8 @@
 
 .col-12 {
   background-color: white;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
 }
+
+

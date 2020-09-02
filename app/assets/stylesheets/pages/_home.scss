@@ -1,7 +1,8 @@
 .home {
   h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-family: 'Amatic SC', cursive;
+    font-weight: bold;
     color: white;
     text-align: center;
     padding-top: 2rem;
@@ -25,7 +26,7 @@
     font-weight: 400;
     line-height: 1.5;
     color: var(--wblue);
-    background-color: #fff;
+    background-color: white;
     background-clip: padding-box;
     border: 0;
     border-radius: 5px;
