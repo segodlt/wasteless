@@ -44,6 +44,10 @@
             <i class="far fa-heart blue-icon"></i>
           <% end %>
         <% end %>
+      <% else %>
+        <%= link_to  new_user_session_path do %>
+          <i class="fas fa-heart blue-icon"></i>
+        <% end %>
       <% end %>
     </div>
 
@@ -107,11 +111,11 @@
                 <div class="icon-reviews">
                 	<% if policy(review).edit? %>
             		  	<%= link_to edit_review_path(review, anchor:"review-form") do %>
-                      <i class="fas fa-pen"></i>
+                      <i class="fas fa-pen rev-i"></i>
                     <% end %>
             		  <% end %>
                   <%= link_to review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
-                    <i class="far fa-trash-alt"></i>
+                    <i class="far fa-trash-alt rev-i"></i>
                   <% end %>
                 </div>
               </li>
