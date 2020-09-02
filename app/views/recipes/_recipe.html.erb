@@ -42,20 +42,20 @@
         </div>
       <% end %>
       <ul id="recipe-ingredients-list"></ul>
-      <div id="first_ingredient" class="ingredient-choice new-ingredient" style="display: none;">
-        <%= f.simple_fields_for :measures do |m| %>
+      <!-- <div id="first_ingredient" class="ingredient-choice new-ingredient" style="display: none;">
+        <%#= f.simple_fields_for :measures do |m| %>
           <div class="ingredient-form">
             <div class="form-inputs">
-              <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
+              <%#= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
             </div>
             <div class="quantity-form">
-              <p> <%= m.input :quantity, label: "-" %><%= m.input :quantity %><%= m.input :quantity, label: "+" %> </p>
-              <span class="display-unit"><%= m.object.ingredient&.unit %></span>
+              <p> <%#= m.input :quantity, label: "-" %><%#= m.input :quantity %><%#= m.input :quantity, label: "+" %> </p>
+              <span class="display-unit"><%#= m.object.ingredient&.unit %></span>
             </div>
-              <%= m.input :required, label: "Facultatif" %>
+              <%#= m.input :required, label: "Facultatif" %>
           </div>
-        <% end %>
-      </div>
+        <%# end %>
+      </div> -->
     </div>
       <div class="add-ingredients btn-blue">
         <i class="fas fa-plus"></i>
