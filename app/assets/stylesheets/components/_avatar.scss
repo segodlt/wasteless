@@ -25,7 +25,7 @@
   text-align: right;
   padding-right: 10px;
   padding-top: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   margin-top: 5px;
 
  #avatar-home img {
@@ -39,6 +39,7 @@
 .dropdown {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .fa-arrow-left {
@@ -52,3 +53,5 @@
 .logo-wasteless {
   width: 80px;
 }
+
+
