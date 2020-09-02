@@ -7,9 +7,9 @@
         <% end %>
       <% end %>
       <% if policy(@recipe).destroy? %>
-        <%= link_to recipe_path(@recipe), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
-          <i class="fas fa-trash-alt show-icon"></i>
-        <% end %>
+      
+        <%= link_to "", recipe_path(@recipe), method: :delete, id: "delete-link", class: "hidden" %>
+        <button id="sweet-alert-demo" class="btn btn-link"><i class="fas fa-trash-alt show-icon"></i></button>          
       <% end %>
     </div>
   <% end %>
