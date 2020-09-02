@@ -1,3 +1,5 @@
+<div id="redirect-recipe-js"></div>
+
 <div class="title title-flexbox title-bottom">
   <h2>Mes recettes</h2>
 </div>
@@ -33,7 +35,7 @@
               </div>
             </div>
             <div class = "bot">
-              <%= link_to recipe_path(recipe) do %>
+              <%= link_to recipe_path(recipe), class:"next-page" do %>
                 <h2><%= recipe.title %></h2>
                <% end %>
               </div>
