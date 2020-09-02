@@ -1,7 +1,4 @@
 <div class="title title-flexbox title-bottom">
-  <%= link_to "javascript:history.back()" do %>
-    <i class="fas fa-arrow-left blue-icon title-arrow"></i>
-  <% end %>
   <h2>Mes favoris</h2>
 </div>
 
@@ -44,6 +41,7 @@
                 <%= link_to recipe_path(favorite.recipe) do %>
                   <h2><%= favorite.recipe.title %></h2>
                  <% end %>
+                </div>
               </div>
             </div>
           <% end %>
