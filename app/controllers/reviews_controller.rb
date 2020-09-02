@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
-	def create
+	before_action :display_review, only: [:edit, :update, :destroy]
+
+  def create
     @review = Review.new(review_params)
     @recipe = Recipe.find(params[:recipe_id])
     @review.user = current_user
@@ -13,22 +15,22 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find(params[:id])
+    #@review = Review.find(params[:id])
     @recipe = @review.recipe
     authorize @review
     render "recipes/show"
   end
 
   def update
-    @review = Review.find(params[:id])
+    #@review = Review.find(params[:id])
     @recipe = @review.recipe
     authorize @review
     @review.update(review_params)
     redirect_to recipe_path(@recipe)
-  end  
+  end
 
   def destroy
-    @review = Review.find(params[:id])
+    #@review = Review.find(params[:id])
     authorize @review
     @review.destroy
     redirect_to recipe_path(@review.recipe)
@@ -38,5 +40,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:rating, :content)
+  end
+
+  def display_review
+    @review = Review.find(params[:id])
   end
 end

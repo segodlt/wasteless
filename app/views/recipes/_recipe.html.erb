@@ -29,7 +29,9 @@
                 <%= m.input :ingredient_id, label: "Ingrédient",collection: Ingredient.all, input_html: { class: 'ingredient_input' } %>
               </div>
               <div class="quantity-form">
-                <%= m.input :quantity, label:"Quantité" %>
+                <input type="text" value="1" class="counter hidden"/>
+                <button type="button" class="increment-btn">+</button>
+                <%= m.input :quantity %>
                 <span class="display-unit"></span>
               </div>
 
@@ -43,10 +45,10 @@
         <%= f.simple_fields_for :measures do |m| %>
           <div class="ingredient-form">
             <div class="form-inputs">
-              <%= m.input :ingredient_id, label: "Ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
+              <%= m.input :ingredient_id, label: "Ingrédient", placeholder: "Recherchez un ingrédient", collection: Ingredient.all, input_html: { class: 'ingredient_input select2' } %>
             </div>
             <div class="quantity-form">
-              <%= m.input :quantity, label:"Quantité" %>
+              <p> <%= m.input :quantity, label: "-" %><%= m.input :quantity %><%= m.input :quantity, label: "+" %> </p>
               <span class="display-unit"><%= m.object.ingredient&.unit %></span>
             </div>
               <%= m.input :required, label: "Facultatif" %>
@@ -65,7 +67,7 @@
     </div>
   <% end %>
 
-
+<!-- formulaire de modification de recette -->
   <div class="new-measure-form d-none form-inputs">
     <div class="new-measure-form-content ingredient-form new-ingredient">
       <div class="form-group">
