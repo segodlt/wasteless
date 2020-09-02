@@ -1,5 +1,5 @@
 const closeNotice = () => {
-  window.setTimeout(closeDiv, 4500);
+  window.setTimeout(closeDiv, 3600);
 };
 
 function closeDiv() {
