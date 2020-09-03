@@ -60,39 +60,41 @@
     <% @recipe.measures.each do |measure| %>
       <div id="measures_list">
         <div>
-          <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post do %>
-            <i class="fas fa-cart-arrow-down blue-icon "></i>
-          <% end %>
+          <p class="ingredient-list"> <%= measure.quantity %>  <%= measure.ingredient.unit %> <%= measure.ingredient.name %></p>
         </div>
-        &nbsp &nbsp
-        <div>
-          <p> <%= measure.quantity %>  <%= measure.ingredient.unit %> - <%= measure.ingredient.name %></p>
-        </div>
-
+        <div class="more-icon-class">
         <!-- MODALE INFOS-->
-        <% if measure.ingredient.alert %>
-          <i class="fas fa-info-circle" data-toggle="modal" data-target="#exampleModalLong<%= modal_id %>"></i>
+          <% if measure.ingredient.alert %>
+            <i class="fas fa-info-circle" data-toggle="modal" data-target="#exampleModalLong<%= modal_id %>"></i>
 
 
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModalLong<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Précautions d'utilisation</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p><%= measure.ingredient.alert %></p>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalLong<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Précautions d'utilisation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p><%= measure.ingredient.alert %></p>
+                  </div>
                 </div>
               </div>
             </div>
+            <!----->
+            <% modal_id += 1 %>
+          <% end %>
+          &nbsp
+          <div>
+            <%= link_to groceries_path(grocery: {measure_id: measure}), method: :post do %>
+              <i class="fas fa-cart-arrow-down blue-icon "></i>
+            <% end %>
           </div>
-          <!----->
-          <% modal_id += 1 %>
-        <% end %>
+        </div>
+
       </div>
     <% end %>
 
