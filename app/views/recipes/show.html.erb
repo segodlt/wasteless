@@ -100,7 +100,7 @@
 
     <p class="recipe-titles">Instructions</p>
 
-    <p id="description"><%= @recipe.description %></p>
+    <p id="description"><%= simple_format(@recipe.description) %></p>
 
     <h3 class="recipe-titles"><%= "#{@recipe.reviews.count} avis" %></h3>
     <% if user_signed_in? && @recipe.user != current_user %>
@@ -143,8 +143,10 @@
       		<% end %>
           <%= f.input :rating, collection: (1..5).to_a, label: "Cette recette vous a plu ?" %>
       	  <%= f.input :content, label: "Racontez-nous votre expérience" %>
-      	  <%= f.submit "Publier" %>
-      	<% end %>
+      	  <div class="review-submit">
+            <%= f.submit "Publier", class: "btn-blue small-btn" %>
+      	 </div>
+        <% end %>
       </div>
     <% end %>
   </div>

@@ -39,14 +39,13 @@
 .grocery-title h1 {
 	text-align: center;
 	font-size: 2rem;
-  font-family: 'Amatic SC', cursive;
-  font-style: bold;
+  font-family: 'Grandstander', cursive;
   color: white;
 }
 
 h3 {
-	font-style: bold;
-	font-size: 1.7em;
+  font-family: 'Grandstander', cursive;
+	font-size: 1.2em;
   margin-bottom: 0px;
   margin-right: 5px;
 };
@@ -63,7 +62,10 @@ h3 {
 
 .grocery-title {
   color: var(--wgreen);
-  font-size: 2.3rem;
+  font-size: 2rem;
+  padding-top: 15px;
+  font-family: 'Grandstander', cursive;
+
 }
 
 .title-list-grocery {

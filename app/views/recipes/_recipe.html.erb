@@ -30,14 +30,30 @@
               </div>
               <div class="quantity-form">
                 <div class="quantity-button">
-                  <%= m.input :quantity, placeholder: "50" %>
+                  <%= m.input :quantity, label:"Quantité", placeholder: "50" %>
                 </div>
-                <div>
-                  <span class="display-unit"></span>
+                <div class="units-form">
+                  <label for="Unité">Unité</label>
+                  <span class="display-unit" id="Unité"></span>
                 </div>
-                  <div class="required">
-                    <%= m.input :required, label: "Facultatif" %>
+
+                <%#= m.input :required, id: "check", label: "Facultatif" %>
+                <fieldset class="form-group boolean optional recipe_measures_required">
+                  <input name="recipe[measures_attributes][0][required]" type="hidden" value="0">
+                  <label for="recipe_measures_attributes_0_required">Facultatif ?</label>
+                  <div class="custom-control custom-switch ">
+                    <input class="custom-control-input" type="checkbox" value="1" name="recipe[measures_attributes][0][required]" id="recipe_measures_attributes_0_required">
+                    <label class="custom-control-label" for="recipe_measures_attributes_0_required"></label>
                   </div>
+                </fieldset>
+
+
+                <!-- <div class="required"> -->
+                  <%#= m.input :required, label: "Facultatif" %>
+                <!-- </div> -->
+                <div class="button-add-ingredient">
+
+                </div>
               </div>
             </div>
           <% end %>
@@ -54,20 +70,21 @@
               <p> <%#= m.input :quantity, label: "-" %><%#= m.input :quantity %><%#= m.input :quantity, label: "+" %> </p>
               <span class="display-unit"><%#= m.object.ingredient&.unit %></span>
             </div>
-              <%#= m.input :required, label: "Facultatif" %>
+              <%#= m.input :required, label: "Fultatif" %>
           </div>
         <%# end %>
       </div> -->
     </div>
-      <div class="add-ingredients btn-blue">
-        <i class="fas fa-plus"></i>
-        Ingrédient
+      <div class="add-ingredients btn-blue ">
+        <i class="fas fa-plus add-icon"></i>
+        &nbsp
+        <i class="fas fa-flask add-icon"></i>
       </div>
 
-    <%= f.input :photos, as: :file, label: ('<i class="fas fa-image"></i>').html_safe , input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'btn-blue'}, class: "form-control-file" %>
-    <div class="form-actions">
-      <%= f.submit "Valider", class: "btn-blue" %>
-    </div>
+      <%= f.input :photos, as: :file, label: ('<i class="fas fa-plus add-icon"></i> &nbsp  <i class="fas fa-camera add-icon"></i> ').html_safe , input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'btn-blue'}, class: "form-control-file" %>
+      <div class="form-actions">
+        <%= f.submit "Valider", class: "btn-blue" %>
+      </div>
   <% end %>
 
 <!-- formulaire de modification de recette -->
