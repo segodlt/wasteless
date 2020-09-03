@@ -1,5 +1,5 @@
 .btn-blue {
-  background-color: var(--wgreen);
+  background-color: var(--wblue);
   color: #ffffff;
   padding: 0.45rem;
   border-radius: 10px;
@@ -7,8 +7,8 @@
 }
 
 .btn-blue:hover {
-  border: solid 1px var(--wgreen);
-  color: var(--wgreen);
+  border: solid 1px var(--wblue);
+  color: var(--wblue);
   background-color: #ffffff;
   transition: all 300ms ease-in-out;
 }
