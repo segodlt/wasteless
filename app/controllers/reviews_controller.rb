@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @review.recipe = @recipe
     authorize @review
     if @review.save
-      redirect_to recipe_path(@recipe)
+      redirect_to recipe_path(@recipe, anchor:"review-form")
     else
       render "recipes/show"
     end
@@ -26,7 +26,7 @@ class ReviewsController < ApplicationController
     @recipe = @review.recipe
     authorize @review
     @review.update(review_params)
-    redirect_to recipe_path(@recipe)
+    redirect_to recipe_path(@recipe, anchor:"review-form")
   end
 
   def destroy

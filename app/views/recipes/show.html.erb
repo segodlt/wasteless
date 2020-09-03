@@ -125,8 +125,11 @@
                     <% end %>
                     &nbsp
                   <% end %>
-                  <%= link_to review_path(review), method: :delete, data: { confirm: "Êtes-vous sûr(e) ?" } do %>
-                    <i class="far fa-trash-alt rev-i"></i>
+
+                  <% if policy(review).destroy? %>
+
+                    <%= link_to "", review_path(review), method: :delete, id: "delete-link", class: "hidden" %>
+                    <button id="sweet-alert-demo" class="btn btn-link"><i class="far fa-trash-alt rev-i"></i></button>
                   <% end %>
                   &nbsp
                 </div>
