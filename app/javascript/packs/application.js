@@ -70,3 +70,10 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 });
 
+document.addEventListener('turbolinks:before-render', () => {
+  const flash = document.querySelector('.flash');
+  if (flash) {
+    console.log(flash);
+    flash.remove();
+  };
+});

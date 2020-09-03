@@ -45,8 +45,8 @@
               <div class = "favorites">
                 <div id="favorite-icon">
                   <% if current_user %>
-                     <% if recipe.favorites.any? %>
-                       <%= link_to favorite_path(recipe.favorites.first), method: :delete do %>
+                     <% if recipe.favorites.where(user_id: current_user.id).any? %>
+                       <%= link_to favorite_path(recipe.favorites.where(user_id: current_user.id).first), method: :delete do %>
                         <i class="fas fa-heart icon"></i>
                        <% end %>
                     <% else %>
