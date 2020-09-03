@@ -3,7 +3,7 @@
     <ul class="nav nav-pills card-footer-pills">
       <li class="nav-item">
         <%= link_to recipes_path do %>
-          <i class="fas fa-bars nav-link <%=  "nav-link-active" if current_page?(dashboard_path) || current_page?(account_path) || current_page?(edit_user_registration_path) || current_page?(mesrecettes_path) %>"><br><p>Mes recettes</p></i>
+          <i class="fas fa-bars nav-link <%=  "nav-link-active" if current_page?(recipes_path) %>"><br><p>Mes recettes</p></i>
         <% end %>
       </li>
 
