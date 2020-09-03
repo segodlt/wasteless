@@ -54,20 +54,21 @@
               <p> <%#= m.input :quantity, label: "-" %><%#= m.input :quantity %><%#= m.input :quantity, label: "+" %> </p>
               <span class="display-unit"><%#= m.object.ingredient&.unit %></span>
             </div>
-              <%#= m.input :required, label: "Facultatif" %>
+              <%#= m.input :required, label: "Fultatif" %>
           </div>
         <%# end %>
       </div> -->
     </div>
-      <div class="add-ingredients btn-blue">
-        <i class="fas fa-plus"></i>
-        Ingrédient
+      <div class="add-ingredients btn-blue ">
+        <i class="fas fa-plus add-icon"></i>
+        &nbsp
+        <i class="fas fa-flask add-icon"></i>
       </div>
 
-    <%= f.input :photos, as: :file, label: ('<i class="fas fa-image"></i>').html_safe , input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'btn-blue'}, class: "form-control-file" %>
-    <div class="form-actions">
-      <%= f.submit "Valider", class: "btn-blue" %>
-    </div>
+      <%= f.input :photos, as: :file, label: ('<i class="fas fa-plus add-icon"></i> &nbsp  <i class="fas fa-camera add-icon"></i> ').html_safe , input_html: { multiple: true, class: 'hidden' }, label_html: { class: 'btn-blue'}, class: "form-control-file" %>
+      <div class="form-actions">
+        <%= f.submit "Valider", class: "btn-blue" %>
+      </div>
   <% end %>
 
 <!-- formulaire de modification de recette -->
