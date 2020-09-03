@@ -33,7 +33,8 @@ import { redirectToRecipe } from "../components/redirect_to_recipe"
 import { initSelect2 } from "../plugins/init_select2"
 import { categoryForm } from "../components/category_form"
 import { closeNotice } from "../components/close_notice"
-import { initStarRating } from '../plugins/init_star_rating';
+import { initStarRating } from '../plugins/init_star_rating'
+import { previewImageOnFileSelect } from "../components/preview_photos"
 
 //import { incrementQuantity } from "../components/increment_quantity"
 
@@ -60,6 +61,7 @@ document.addEventListener('turbolinks:load', () => {
   categoryForm();
   closeNotice();
   initStarRating();
+  previewImageOnFileSelect();
 
   // incrementQuantity();
   // $(".category-choice").click(function(){
