@@ -81,10 +81,10 @@
         <i class="fas fa-flask add-icon"></i>
       </div>
 
-      <%= f.input :photos, as: :file, label: ('<i class="fas fa-plus add-icon"></i> &nbsp  <i class="fas fa-camera add-icon"></i> ').html_safe , input_html: { multiple: true, class: 'd-none', id: 'photo-input' }, label_html: { class: 'btn-blue upload-photo'}, class: "form-control-file" %>
       <div class="preview-photo-style">
-        <%= image_tag "", width: 100, class: "hidden", id: "photo-preview" %>
+        <%= image_tag "", width: 100, class: "d-none", id: "photo-preview" %>
       </div>
+      <%= f.input :photos, as: :file, label: ('<i class="fas fa-plus add-icon"></i> &nbsp  <i class="fas fa-camera add-icon"></i> ').html_safe , input_html: { multiple: true, class: 'd-none', id: 'photo-input' }, label_html: { class: 'btn-blue upload-photo'}, class: "form-control-file" %>
       <div class="form-actions">
         <%= f.submit "Valider", class: "btn-blue" %>
       </div>

@@ -101,7 +101,7 @@ const touchNextIngredient = (event) => {
     const ingredientUnit = lastNewIngredient.querySelector('.display-unit').innerText;
     const facultative = lastNewIngredient.querySelector(".recipe_measures_required input[type='checkbox']");
     if (facultative.checked) {
-      return `${ingredientName} (${ingredientQuantity} ${ingredientUnit}) - <div class="display-F-Facultatif"> F</div>`;
+      return `${ingredientName} (${ingredientQuantity} ${ingredientUnit}) - <div class="display-F-Facultatif"> Facultatif</div>`;
     } else {
       return `${ingredientName} (${ingredientQuantity} ${ingredientUnit})`;
     }
