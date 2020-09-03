@@ -118,6 +118,7 @@
             <div class="review">
               <p class="username"> <%= review.user.username %></p>
               <li>
+                <span><%= review.rating.to_i %>/5 <i class="fas fa-star star-review"></i> </span>&nbsp <span class="review-para"><%= review.content %></span>&nbsp
                 <div class="icon-reviews">
                   <% if policy(review).edit? %>
                     <%= link_to edit_review_path(review, anchor:"review-form") do %>
@@ -133,7 +134,6 @@
                   <% end %>
                   &nbsp
                 </div>
-                <%= review.rating.to_i %>/5 <i class="fas fa-star star-review"></i> &nbsp <span class="review-para"><%= review.content %></span>&nbsp
               </li>
             </div>
           <% end %>
