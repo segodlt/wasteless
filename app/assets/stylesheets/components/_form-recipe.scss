@@ -11,10 +11,11 @@
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
+  color: white;
 }
 
 .category-choice {
-  background: #b7b7b7;
+  background: #878f97;
   padding: 10px;
   border-radius: 5px;
   opacity: .4;
@@ -96,10 +97,6 @@
   font-size: 1rem;
   margin-bottom: 20px;
   margin-top: 20px;
-
-    li {
-      display: flex;
-    }
 }
 
 .fa-image {
@@ -118,8 +115,6 @@
 
 .display-F-Facultatif {
   font-style: italic;
-  color: var(--wblue);
-  font-weight: bold;
 }
 
 .form-group.boolean.optional.recipe_measures_required {
@@ -127,10 +122,10 @@
 }
 
 .preview-photo-style {
-  margin-bottom: 32px;
   text-align: center;
 }
 
-// #photo-preview {
-//   width: 100px;
-// }
+#photo-preview {
+  margin-bottom: 20px;
+  border: 2px solid var(--wgreen);
+}
