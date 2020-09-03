@@ -1,7 +1,6 @@
 .recipe_show {
   margin: 10px;
   padding: 0px;
-  background-color: white;
 }
 
 .recipe_show h2 {
@@ -156,4 +155,14 @@
   a.br-selected:after {
     color: var(--wblue);
   }
+}
+
+.small-btn {
+  width: 50%;
+  font-weight: 600;
+}
+
+.review-submit {
+  text-align: center;
+  margin-top: 10px;
 }
