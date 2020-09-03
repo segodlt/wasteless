@@ -22,26 +22,6 @@ const handleUnitForUdatedIngredient = (event) => {
     });
 }
 
-// const incrementQuantity = () => {
-//   let q = 0;
-//   const quantities = document.querySelectorAll(".counter")
-//   if (quantities) {
-//     quantities.forEach((quantity) => {
-//       quantity.addEventListener("click", (event) => {
-//         const quantityValue = quantity.value;
-//         const quantityParsed = parseInt(quantityValue, 10);
-//         if (quantityParsed >= 0) {
-//           let q ++ 1
-//         }
-//         // const quantityIncremented = (q + quantityParsed);
-//         console.log(q);
-
-//       })
-
-//     })
-//   }
-// };
-
 const nextIngredient = () => {
   const cross = document.querySelector(".add-ingredients");
   if (cross) {
@@ -67,7 +47,6 @@ const touchNextIngredient = (event) => {
     displayUnit(newNode); // add click event on ingredient input
     firstIngredient.parentNode.appendChild(newNode);
     newNode.querySelector(".display-unit").innerText = '';
-    // incrementQuantity();
     newNode.classList.remove('d-none');
     initSelect2(`#recipe_measures_attributes_${measureIndex}_ingredient_id`);
     const activeForm = document.querySelector('.ingredient-choice.active')
