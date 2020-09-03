@@ -60,7 +60,11 @@
     <% @recipe.measures.each do |measure| %>
       <div id="measures_list">
         <div>
-          <p class="ingredient-list"> <%= measure.quantity %>  <%= measure.ingredient.unit %> <%= measure.ingredient.name %></p>
+          <p class="ingredient-list"> <%= measure.quantity %>  <%= measure.ingredient.unit %> - <%= measure.ingredient.name %>
+            <% if measure.required %>
+              <span class="italic">(facultatif)</span>
+            <% end %>
+          </p>
         </div>
         <div class="more-icon-class">
         <!-- MODALE INFOS-->
