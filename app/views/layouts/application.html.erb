@@ -22,10 +22,11 @@
             <div class="col-12">
               <div class="dropdown" id="avatar-home">
                 <%= link_to "javascript:history.back()" do %>
-                  <i class="fas fa-arrow-left"></i>
+                  <i class="fas fa-chevron-left"></i>
                 <% end %>
                 <%= image_tag "logo-wasteless.png", alt: "logo", class:"logo-wasteless" %>
                 <% if user_signed_in? %>
+                  <% if current_user.photo.attached?  %>
                     <%= cl_image_tag current_user.photo.key, width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} if current_user.photo.attached? %>
                     <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
                       <%= link_to "Mon compte", account_path, class:"dropdown-item white-menu"%>
@@ -33,10 +34,19 @@
                       <%= link_to "Mentions légales", "#", class:"dropdown-item white-menu"%>
                       <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item white-menu"%>
                     </div>
-                <% else %>
-                  <%= cl_image_tag "https://res.cloudinary.com/dhf497t6o/image/upload/v1599036991/avatar-gris_jdsrdo.png", width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
-                  <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
-                    <%= link_to "Se connecter", new_user_session_path, class:"dropdown-item white-menu"%>
+                    <% else %>
+                      <%= cl_image_tag "https://res.cloudinary.com/dhf497t6o/image/upload/v1599036991/avatar-gris_jdsrdo.png", width: 60, height: 60, crop: :fill, class:"avatar dropdown-toggle", :id => "navbarDropdown", data: { toggle: "dropdown" }, aria: { haspopup: "true", expanded: "false"} %>
+                      <div class="dropdown-menu dropdown-menu-right back-color" aria-labelledby="navbarDropdown">
+                        <%= link_to "Mon compte", account_path, class:"dropdown-item white-menu"%>
+                        <%= link_to "Contactez-nous", "#", class:"dropdown-item white-menu"%>
+                        <%= link_to "Mentions légales", "#", class:"dropdown-item white-menu"%>
+                        <%= link_to "Se déconnecter", destroy_user_session_path, class:"dropdown-item white-menu"%>
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to new_user_session_path do %>
+                      <i class="fas fa-sign-in-alt connect"></i>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
