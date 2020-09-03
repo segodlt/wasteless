@@ -1,0 +1,5 @@
+meta_product_name: "Wasteless"
+meta_title: "Wasteless - Wasteless vous aide dans votre transition pour une vie 'Zéro déchet'."
+meta_description: "Recherchez et partagez vos recettes de produits ménagers et bien-être faits maison !"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
