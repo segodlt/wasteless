@@ -7,9 +7,9 @@
         <% end %>
       <% end %>
       <% if policy(@recipe).destroy? %>
-      
+
         <%= link_to "", recipe_path(@recipe), method: :delete, id: "delete-link", class: "hidden" %>
-        <button id="sweet-alert-demo" class="btn btn-link"><i class="fas fa-trash-alt show-icon"></i></button>          
+        <button id="sweet-alert-demo" class="btn btn-link"><i class="fas fa-trash-alt show-icon"></i></button>
       <% end %>
     </div>
   <% end %>
@@ -98,7 +98,7 @@
 
     <p class="recipe-titles">Instructions</p>
 
-    <p id="description"><%= @recipe.description %></p>
+    <p id="description"><%= simple_format(@recipe.description) %></p>
 
     <h3 class="recipe-titles"><%= "#{@recipe.reviews.count} avis" %></h3>
     <% if user_signed_in? && @recipe.user != current_user %>

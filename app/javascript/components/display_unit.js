@@ -60,7 +60,7 @@ const touchNextIngredient = (event) => {
     console.log(lastNewIngredient);
 
     // Ajouter un bouton ADD ingredient
-    lastNewIngredient.insertAdjacentHTML('beforeend', `<div id="button-add-ingredient"><div id="add-ingredient-to-recipe">Ajouter</div></div>`);
+    lastNewIngredient.querySelector('.button-add-ingredient').innerHTML = `<div id="add-ingredient-to-recipe">Ajouter</div>`;
     const addIngredientButton = document.getElementById("add-ingredient-to-recipe");
     addIngredientButton.addEventListener('click', (event) => {
       lastNewIngredient.style.display = "none";
@@ -101,7 +101,7 @@ const touchNextIngredient = (event) => {
     const ingredientUnit = lastNewIngredient.querySelector('.display-unit').innerText;
     const facultative = lastNewIngredient.querySelector(".recipe_measures_required input[type='checkbox']");
     if (facultative.checked) {
-      return `${ingredientName} (${ingredientQuantity} ${ingredientUnit}) - F`;
+      return `${ingredientName} (${ingredientQuantity} ${ingredientUnit}) - <div class="display-F-Facultatif"> F</div>`;
     } else {
       return `${ingredientName} (${ingredientQuantity} ${ingredientUnit})`;
     }
