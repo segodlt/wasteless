@@ -27,7 +27,7 @@
 
 <div class="results">
   <% if params[:query].present? %>
-    <p><%= pluralize(@recipes.count,"résultat") %></p>
+    <p><%= @recipes.size > 1 ? "#{@recipes.size} résultats" : "#{@recipes.size} résultat" %> </p>
   <% elsif params[:category_id].present? %>
     <p>Nos recettes <%= @category.name.downcase %> </p>
   <% else %>
