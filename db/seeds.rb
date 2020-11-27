@@ -93,9 +93,10 @@ end
 puts "Part 2 finish"
 puts "Database created"
 
-# puts "Creating admin account"
+puts "Creating admin account"
+admin = User.where(email: "equipe.wasteless@gmail.com").destroy_all
+admin = User.new(email: "equipe.wasteless@gmail.com", password: 123456, admin: true)
+admin.save!
 
-# admin = User.create!(email: "equipe.wasteless@gmail.com", password: 123456, admin: true)
-
-# puts "admin account created"
+puts "admin account created"
 
